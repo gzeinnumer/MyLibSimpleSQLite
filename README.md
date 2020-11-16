@@ -23,7 +23,7 @@
 
 ---
 
-`I just try to make Cursor and ContentValue disappeared but its still in there, I hate always having Typo on my code, specially on Cursor and Content Value again and again. And take time to debug and fix it. arghh...`
+`I just try to make Cursor and ContentValues disappeared but its still in there, I hate always having Typo on my code, specially on Cursor and ContentValues again and again. And take time to debug and fix it. arghh...`
 
 `Than I made this so I don't hate it anymore, hope you enjoy it :)`
 
@@ -60,7 +60,7 @@ dependencies {
 
 ## Scenario Table
 <p align="center">
-  <img src="https://github.com/gzeinnumer/MyLibSimpleSQLiteExample/blob/master/preview/example5.JPG" width="400"/>
+  <img src="https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/preview/example5.JPG" width="400"/>
 </p>
 
 ---
