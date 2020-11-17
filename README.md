@@ -94,7 +94,7 @@ public class GblVariabel {
 ```
 Here is my [DatabaseHelper](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/helper/DatabaseHelper.java).
 
-Or you can use your own onfiguration, just make sure you have access to your `local database`.
+**Or you can use your own configuration to connect to Database, just make sure you have access to your `local database`. [ReadMore](https://developer.android.com/training/data-storage/sqlite?hl=id)**.
 
 You need to extends `SQLiteLIB<YourEntity>` to your `Entity`. And Use Annotation `@SQLiteTable(tableName = "you_table_name")` like this:
 ```java
