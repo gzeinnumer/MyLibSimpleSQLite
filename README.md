@@ -131,21 +131,19 @@ You can make it more simple with this `Annotation`
 - `@PrimaryKeyTypeData` or `@VarcharTypeData` or `@IntegerTypeData` or `@TimeStampTypeData` or `@TextTypeData` or `@DoubleTypeData` or `@JoinColumnTypeData`
 > After
 ```java
-@PrimaryKeyTypeData public int id;              // for Primary key
-@VarcharTypeData    public String name;         // for Varchar
-@DecimalTypeData    public double rating;       // for Decimal/Real
-@TextTypeData       public String desc;         // for String
-@IntegerTypeData    public int flag_active;     // for Integer
-@TimeStampTypeData  public String created_at;   // for String
+@PrimaryKeyTypeData private int id;              // for Primary key
+@VarcharTypeData    private String name;         // for Varchar
+@DecimalTypeData    private double rating;       // for Decimal/Real
+@TextTypeData       private String desc;         // for String
+@IntegerTypeData    private int flag_active;     // for Integer
+@TimeStampTypeData  private String created_at;   // for String
 
 // for join column from other table
 //@JoinColumn(withTable = "table2", columnName = "name")
 @JoinColumn(withTable = "table2", columnName = "name", alias = "table2_name")
-public String table2_name;
+private String table2_name;
 ```
 **Notes :**
-- `**Variable must be PUBLIC**`
-  - Varible with this annotation must be public.
 - `@PrimaryKeyTypeData` :
   - Your variable type should `int`.
 - `@VarcharTypeData` :
@@ -352,7 +350,7 @@ public List<Table_1> query(){
 ```java
 //dont forget to write this to
 @JoinColumn(withTable = "table2", columnName = "name", alias = "table2_name")
-public String table2_name;
+private String table2_name;
 
 public List<Table1> query(){
     String query ="SELECT table1.*, table2.name AS table2_name FROM table1 JOIN table2 ON table2.id_table1 = table1.id;";
