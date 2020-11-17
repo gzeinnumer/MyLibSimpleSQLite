@@ -104,6 +104,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
 
         String field = "";
         for (Field f : clss.getDeclaredFields()) {
+            f.setAccessible(true);
             PrimaryKeyTypeData primaryKeyTypeData = f.getAnnotation(PrimaryKeyTypeData.class);
             if (primaryKeyTypeData != null) {
                 field = press(f.toString());
@@ -156,6 +157,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             while (cursor.moveToNext()) {
                 HashMap<String, Object> hashMap = new HashMap<>();
                 for (Field f : clss.getDeclaredFields()) {
+                    f.setAccessible(true);
                     PrimaryKeyTypeData primaryKeyTypeData = f.getAnnotation(PrimaryKeyTypeData.class);
                     if (primaryKeyTypeData != null) {
                         field = removeLast(press(f.toString()));
@@ -230,6 +232,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             while (cursor.moveToNext()) {
                 HashMap<String, Object> hashMap = new HashMap<>();
                 for (Field f : clss.getDeclaredFields()) {
+                    f.setAccessible(true);
                     PrimaryKeyTypeData primaryKeyTypeData = f.getAnnotation(PrimaryKeyTypeData.class);
                     if (primaryKeyTypeData != null) {
                         field = removeLast(press(f.toString()));
@@ -353,6 +356,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
 
         String field = "";
         for (Field f : clss.getDeclaredFields()) {
+            f.setAccessible(true);
             PrimaryKeyTypeData primaryKeyTypeData = f.getAnnotation(PrimaryKeyTypeData.class);
             if (primaryKeyTypeData != null) {
                 field = removeLast(press(f.toString()));
