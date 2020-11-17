@@ -376,6 +376,10 @@ Entity New Verion
 
 ---
 
+**Example App [Java](https://github.com/gzeinnumer/MyLibSQLiteExample) & [Kotlin](https://github.com/gzeinnumer/MyLibSimpleSQLitekt)**
+
+---
+
 ## Version
 - **1.0.0**
   - First Release
