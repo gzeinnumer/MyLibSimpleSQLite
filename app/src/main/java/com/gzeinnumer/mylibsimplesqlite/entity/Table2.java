@@ -1,11 +1,5 @@
 package com.gzeinnumer.mylibsimplesqlite.entity;
 
-import com.gzeinnumer.mylibsqlitelib.SQLiteLIB;
-import com.gzeinnumer.mylibsqlitelib.struck.Table;
-import com.gzeinnumer.mylibsqlitelib.typeData.Int;
-import com.gzeinnumer.mylibsqlitelib.typeData.PrimaryKey;
-import com.gzeinnumer.mylibsqlitelib.typeData.Varchar;
-
 import java.util.List;
 
 @Table(tableName = "table2")

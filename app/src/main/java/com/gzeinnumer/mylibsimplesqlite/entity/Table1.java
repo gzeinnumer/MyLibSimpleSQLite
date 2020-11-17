@@ -1,27 +1,33 @@
 package com.gzeinnumer.mylibsimplesqlite.entity;
 
-import com.gzeinnumer.mylibsqlite.helper.GblVariabel;
-import com.gzeinnumer.mylibsqlitelib.SQLiteLIB;
-import com.gzeinnumer.mylibsqlitelib.struck.JoinColumn;
-import com.gzeinnumer.mylibsqlitelib.struck.Table;
-import com.gzeinnumer.mylibsqlitelib.typeData.Decimal;
-import com.gzeinnumer.mylibsqlitelib.typeData.Int;
-import com.gzeinnumer.mylibsqlitelib.typeData.PrimaryKey;
-import com.gzeinnumer.mylibsqlitelib.typeData.Text;
-import com.gzeinnumer.mylibsqlitelib.typeData.TimeStamp;
-import com.gzeinnumer.mylibsqlitelib.typeData.Varchar;
+import com.gzeinnumer.mylibsimplesqlite.SQLiteLIB;
+import com.gzeinnumer.mylibsimplesqlite.helper.GblVariabel;
+import com.gzeinnumer.mylibsimplesqlite.struck.JoinColumn;
+import com.gzeinnumer.mylibsimplesqlite.struck.SQLiteTable;
+import com.gzeinnumer.mylibsimplesqlite.typeData.DecimalTypeData;
+import com.gzeinnumer.mylibsimplesqlite.typeData.IntegerTypeData;
+import com.gzeinnumer.mylibsimplesqlite.typeData.PrimaryKeyTypeData;
+import com.gzeinnumer.mylibsimplesqlite.typeData.TextTypeData;
+import com.gzeinnumer.mylibsimplesqlite.typeData.TimeStampTypeData;
+import com.gzeinnumer.mylibsimplesqlite.typeData.VarcharTypeData;
 
 import java.util.List;
 
-@Table(tableName = "table1")
+@SQLiteTable(tableName = "table1")
 public class Table1 extends SQLiteLIB<Table1> {
 
-    @PrimaryKey public int id;
-    @Varchar public String name;
-    @Decimal public double rating;
-    @Text public String desc;
-    @Int public int flag_active;
-    @TimeStamp public String created_at;
+    @PrimaryKeyTypeData
+    public int id;
+    @VarcharTypeData
+    public String name;
+    @DecimalTypeData
+    public double rating;
+    @TextTypeData
+    public String desc;
+    @IntegerTypeData
+    public int flag_active;
+    @TimeStampTypeData
+    public String created_at;
 
 //    @JoinColumn(withTable = "table2", columnName = "name")
     @JoinColumn(withTable = "table2", columnName = "name", alias = "table2_name")
