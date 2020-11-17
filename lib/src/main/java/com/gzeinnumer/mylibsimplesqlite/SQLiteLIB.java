@@ -462,6 +462,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
         List<String> value = new ArrayList<>();
         List<String> key = new ArrayList<>();String field = "";
         for (Field f : clss.getDeclaredFields()) {
+            f.setAccessible(true);
             IntegerTypeData _int = f.getAnnotation(IntegerTypeData.class);
             if (_int != null) {
                 field = removeLast(press(f.toString()));

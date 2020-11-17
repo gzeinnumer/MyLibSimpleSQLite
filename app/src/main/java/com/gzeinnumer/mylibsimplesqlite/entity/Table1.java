@@ -17,17 +17,17 @@ import java.util.List;
 public class Table1 extends SQLiteLIB<Table1> {
 
     @PrimaryKeyTypeData
-    public int id;
+    private int id;
     @VarcharTypeData
-    public String name;
+    private String name;
     @DecimalTypeData
-    public double rating;
+    private double rating;
     @TextTypeData
-    public String desc;
+    private String desc;
     @IntegerTypeData
-    public int flag_active;
+    private int flag_active;
     @TimeStampTypeData
-    public String created_at;
+    private String created_at;
 
 //    @JoinColumn(withTable = "table2", columnName = "name")
     @JoinColumn(withTable = "table2", columnName = "name", alias = "table2_name")
