@@ -12,7 +12,7 @@
 </h1>
 
 <div align="center">
-    <a><img src="https://img.shields.io/badge/Version-1.0.5-brightgreen.svg?style=flat"></a>
+    <a><img src="https://img.shields.io/badge/Version-1.0.6-brightgreen.svg?style=flat"></a>
     <a><img src="https://img.shields.io/badge/ID-gzeinnumer-blue.svg?style=flat"></a>
     <a><img src="https://img.shields.io/badge/Java-Suport-green?logo=java&style=flat"></a>
     <a><img src="https://img.shields.io/badge/Koltin-Suport-green?logo=kotlin&style=flat"></a>
@@ -96,7 +96,7 @@ Here is my [DatabaseHelper](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob
 
 **Or you can use your own configuration to connect to Database, just make sure you have access to your `local database`. [ReadMore](https://developer.android.com/training/data-storage/sqlite?hl=id)**.
 
-You need to extends `SQLiteLIB<YourEntity>` to your `Entity`. And Use Annotation `@SQLiteTable(tableName = "you_table_name")` like this:
+You need to extends `SQLiteLIB<YourEntity>` to your `Entity Class`. And Use Annotation `@SQLiteTable(tableName = "you_table_name")` like this:
 ```java
 @SQLiteTable(tableName = "table1")
 public class Table1 extends SQLiteLIB<Table1> {
@@ -158,7 +158,6 @@ private String table2_name;
 - `@DoubleTypeData` :
   - Your variable type should `double`.
 - `@JoinColumnTypeData` :
-  - **Only Support STRING**
   - `withTable` = other table to join with current table.
   - `columnName` = realname on other table.
   - `alias` = if your `first table` and `second table` haven't same `column name`. you can ignore it.
@@ -219,8 +218,8 @@ public boolean update(Table_1 data){
 ```java
 //no need to write WHERE, i will write it for you, just type your condition
 public boolean update(Table1 data) {
-    String condition = "id='1'";                            //for single condition
-    //String condition = "id='1' AND flag_Active='1'";      //for multi condition
+    String condition = "id='500'";                            //for single condition
+    //String condition = "id='500' AND flag_Active='1'";      //for multi condition
     return updatedData(Table1.class, GblVariabel.myDb, data, condition);  // return true/false
 }
 ```
@@ -245,8 +244,8 @@ public boolean delete(){
 ```java
 //no need to write WHERE, i will write it for you, just type your condition
 public boolean delete() {
-    String condition = "id='1'";                        //for single condition
-    //String condition = "id='1' AND flag_Active='1'";    //for multi condition
+    String condition = "id='1=500'";                        //for single condition
+    //String condition = "id='500' AND flag_Active='1'";    //for multi condition
     return deleteData(Table1.class, GblVariabel.myDb, condition);
 }
 ```
@@ -276,7 +275,8 @@ public int count() {
 
 //type 2 no need to write WHERE, i will write it for you, just type your condition
 public int count() {
-    String condition = "id='1'";
+    String condition = "id='500'";                        //for single condition
+    //String condition = "id='500' AND flag_Active='1'";    //for multi condition
     return countData(Table1.class, GblVariabel.myDb, condition);
 }
 ```
@@ -314,8 +314,8 @@ public int count() {
 
 //type 2 no need to write WHERE, i will write it for you, just type your condition
 public int count() {
-    String condition = "id='1'";                        //for single condition
-    String condition = "id='1' AND flag_Active='1'";    //for multi condition
+    String condition = "id='500'";                        //for single condition
+    //String condition = "id='500' AND flag_Active='1'";    //for multi condition
 
     return readData(Table_1.class, GblVariabel.myDb, condition);
 }
