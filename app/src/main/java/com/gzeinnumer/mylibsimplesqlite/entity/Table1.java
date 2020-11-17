@@ -49,13 +49,13 @@ public class Table1 extends SQLiteLIB<Table1> {
     }
 
     public boolean update(Table1 data) {
-        String condition = "id='1'";                        //for single condition
+        String condition = "id='500'";                        //for single condition
         //String condition = "id='1' AND flag_Active='1'";    //for multi condition
         return updatedData(Table1.class, GblVariabel.myDb, data, condition);  // return true/false
     }
 
     public boolean delete() {
-        String condition = "id='1'";                        //for single condition
+        String condition = "id='500'";                        //for single condition
         //String condition = "id='1' AND flag_Active='1'";    //for multi condition
         return deleteData(Table1.class, GblVariabel.myDb, condition);
     }
