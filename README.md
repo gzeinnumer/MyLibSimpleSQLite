@@ -55,6 +55,7 @@ dependencies {
 - [x] [Count](#count)
 - [x] [Read](#read)
 - [x] [Query](#query) for Complex Query
+- [ ] Create Table
 
 ---
 
