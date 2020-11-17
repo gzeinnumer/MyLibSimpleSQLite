@@ -13,7 +13,7 @@ import com.gzeinnumer.mylibsimplesqlite.typeData.VarcharTypeData;
 
 import java.util.List;
 
-//@SQLiteTable(tableName = "table1")
+@SQLiteTable(tableName = "table1")
 public class Table1 extends SQLiteLIB<Table1> {
 
     @PrimaryKeyTypeData
