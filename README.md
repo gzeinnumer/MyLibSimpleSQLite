@@ -95,9 +95,9 @@ Here is my [DatabaseHelper](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob
 
 Or you can use your own onfiguration, just make sure you have access to your `local database`.
 
-You need to extends `SQLiteLIB<YourEntity>` to your `Entity`. And Use Annotation `@Table(tableName = "you_table_name")` like this:
+You need to extends `SQLiteLIB<YourEntity>` to your `Entity`. And Use Annotation `@SQLiteTable(tableName = "you_table_name")` like this:
 ```java
-@Table(tableName = "table1")
+@SQLiteTable(tableName = "table1")
 public class Table1 extends SQLiteLIB<Table1> {
 
     ...
@@ -128,15 +128,15 @@ private String table2_name;
 
 ```
 You can make it more simple with this `Annotation`
-- `@PrimaryKey` or `@Varchar` or `@Int` or `@TimeStamp` or `@Text` or `@Double` or `@JoinColumn`
+- `@PrimaryKeyTypeData` or `@VarcharTypeData` or `@IntegerTypeData` or `@TimeStampTypeData` or `@TextTypeData` or `@DoubleTypeData` or `@JoinColumnTypeData`
 > After
 ```java
-@PrimaryKey public int id;              // for Primary key
-@Varchar    public String name;         // for Varchar
-@Decimal    public double rating;       // for Decimal/Real
-@Text       public String desc;         // for String
-@Int        public int flag_active;     // for Integer
-@TimeStamp  public String created_at;   // for String
+@PrimaryKeyTypeData public int id;              // for Primary key
+@VarcharTypeData    public String name;         // for Varchar
+@DecimalTypeData    public double rating;       // for Decimal/Real
+@TextTypeData       public String desc;         // for String
+@IntegerTypeData    public int flag_active;     // for Integer
+@TimeStampTypeData  public String created_at;   // for String
 
 // for join column from other table
 //@JoinColumn(withTable = "table2", columnName = "name")
@@ -146,19 +146,19 @@ public String table2_name;
 **Notes :**
 - `**Variable must be PUBLIC**`
   - Varible with this annotation must be public.
-- `@PrimaryKey` :
+- `@PrimaryKeyTypeData` :
   - Your variable type should `int`.
-- `@Varchar` :
+- `@VarcharTypeData` :
   - Your variable type should `String`.
-- `@Int` :
+- `@IntegerTypeData` :
   - Your variable type should `int`.
-- `@TimeStamp` :
+- `@TimeStampTypeData` :
   - Your variable type should `String`.
-- `@Text` :
+- `@TextTypeData` :
   - Your variable type should `String`.
-- `@Double` :
+- `@DoubleTypeData` :
   - Your variable type should `double`.
-- `@JoinColumn` :
+- `@JoinColumnTypeData` :
   - **Only Support STRING**
   - `withTable` = other table to join with current table.
   - `columnName` = realname on other table.
