@@ -43,16 +43,19 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
         if (clss.isAnnotationPresent(SQLiteTable.class)) {
             SQLiteTable SQLiteTable = clss.getAnnotation(SQLiteTable.class);
             if (SQLiteTable == null) {
-                logD("Annotation Table Not Found");
+                logD("countData: Annotation SQLiteTable Not Found");
                 return count;
             } else {
                 tableName = SQLiteTable.tableName();
             }
+        } else {
+            logD("countData: Annotation SQLiteTable Not Found");
+            return count;
         }
         query.append(tableName);
 
         if (clss.getDeclaredFields().length == 0){
-            logD("Annotation Entity Not Found");
+            logD("countData: Annotation Entity Not Found");
             return count;
         }
 
@@ -90,15 +93,18 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
         if (clss.isAnnotationPresent(SQLiteTable.class)) {
             SQLiteTable SQLiteTable = clss.getAnnotation(SQLiteTable.class);
             if (SQLiteTable == null) {
-                logD("Annotation Table Not Found");
+                logD("readData: Annotation SQLiteTable Not Found");
                 return list;
             } else {
                 tableName = SQLiteTable.tableName();
             }
+        } else {
+            logD("countData: Annotation SQLiteTable Not Found");
+            return list;
         }
 
         if (clss.getDeclaredFields().length == 0){
-            logD("Annotation Entity Not Found");
+            logD("readData: Annotation Entity Not Found");
             return list;
         }
 
@@ -210,15 +216,18 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
         if (clss.isAnnotationPresent(SQLiteTable.class)) {
             SQLiteTable SQLiteTable = clss.getAnnotation(SQLiteTable.class);
             if (SQLiteTable == null) {
-                logD("Annotation Table Not Found");
+                logD("queryData: Annotation SQLiteTable Not Found");
                 return list;
             } else {
                 tableName = SQLiteTable.tableName();
             }
+        } else {
+            logD("countData: Annotation SQLiteTable Not Found");
+            return list;
         }
 
         if (clss.getDeclaredFields().length == 0){
-            logD("Annotation Entity Not Found");
+            logD("queryData: Annotation Entity Not Found");
             return list;
         }
 
@@ -305,16 +314,19 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
         if (clss.isAnnotationPresent(SQLiteTable.class)) {
             SQLiteTable SQLiteTable = clss.getAnnotation(SQLiteTable.class);
             if (SQLiteTable == null){
-                logD("Annotation Table Not Found");
+                logD("deleteData: Annotation SQLiteTable Not Found");
                 return false;
             } else {
                 tableName = SQLiteTable.tableName();
             }
+        } else {
+            logD("countData: Annotation SQLiteTable Not Found");
+            return false;
         }
         query.append(tableName);
 
         if (clss.getDeclaredFields().length == 0){
-            logD("Annotation Entity Not Found");
+            logD("deleteData: Annotation Entity Not Found");
             return false;
         }
 
@@ -339,15 +351,18 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
         if (clss.isAnnotationPresent(SQLiteTable.class)) {
             SQLiteTable SQLiteTable = clss.getAnnotation(SQLiteTable.class);
             if (SQLiteTable == null){
-                logD("Annotation Table Not Found");
+                logD("insertData: Annotation SQLiteTable Not Found");
                 return false;
             } else {
                 tableName = SQLiteTable.tableName();
             }
+        } else {
+            logD("countData: Annotation SQLiteTable Not Found");
+            return false;
         }
 
         if (clss.getDeclaredFields().length == 0){
-            logD("Annotation Entity Not Found");
+            logD("insertData: Annotation Entity Not Found");
             return false;
         }
 
@@ -425,9 +440,6 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             }
         }
 
-        logD(String.valueOf(key.size()));
-        logD(String.valueOf(value.size()));
-
         try {
             ContentValues values = new ContentValues();
             for (int i = 0; i < key.size(); i++) {
@@ -447,15 +459,18 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
         if (clss.isAnnotationPresent(SQLiteTable.class)) {
             SQLiteTable SQLiteTable = clss.getAnnotation(SQLiteTable.class);
             if (SQLiteTable == null){
-                logD("Annotation Table Not Found");
+                logD("updatedData: Annotation SQLiteTable Not Found");
                 return false;
             } else {
                 tableName = SQLiteTable.tableName();
             }
+        } else {
+            logD("countData: Annotation SQLiteTable Not Found");
+            return false;
         }
 
         if (clss.getDeclaredFields().length == 0){
-            logD("Annotation Entity Not Found");
+            logD("updatedData: Annotation Entity Not Found");
             return false;
         }
 
