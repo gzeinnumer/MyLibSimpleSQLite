@@ -389,6 +389,8 @@ Entity New Verion
 ## Version
 - **1.0.0**
   - First Release
+- **1.0.6**
+  - Kotlin Version
 
 ---
 
