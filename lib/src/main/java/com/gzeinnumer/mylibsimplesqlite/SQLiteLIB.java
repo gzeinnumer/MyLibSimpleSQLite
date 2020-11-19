@@ -375,13 +375,15 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             f.setAccessible(true);
             PrimaryKeyTypeData primaryKeyTypeData = f.getAnnotation(PrimaryKeyTypeData.class);
             if (primaryKeyTypeData != null) {
-                field = removeLast(press(f.toString()));
-                key.add(field);
-                try {
-                    value.add(String.valueOf(f.get(data)));
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                    logD(e.getMessage());
+                if (!primaryKeyTypeData.autoGenerate()){
+                    field = removeLast(press(f.toString()));
+                    key.add(field);
+                    try {
+                        value.add(String.valueOf(f.get(data)));
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                        logD(e.getMessage());
+                    }
                 }
             }
             IntegerTypeData _int = f.getAnnotation(IntegerTypeData.class);

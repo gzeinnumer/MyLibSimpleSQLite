@@ -60,6 +60,9 @@ dependencies {
 ---
 
 ## Scenario Table
+|<img src="https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/preview/example7.JPG" width="400"/>|<img src="https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/preview/example8.JPG" width="400"/>|
+|---|---|
+
 <p align="center">
   <img src="https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/preview/example5.JPG" width="400"/>
 </p>
@@ -389,6 +392,8 @@ Entity New Verion
 ## Version
 - **1.0.0**
   - First Release
+- **1.0.6**
+  - Kotlin Version
 
 ---
 

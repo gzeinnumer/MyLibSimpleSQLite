@@ -16,6 +16,7 @@ import java.util.List;
 @SQLiteTable(tableName = "table1")
 public class Table1 extends SQLiteLIB<Table1> {
 
+//    @PrimaryKeyTypeData(autoGenerate = false)
     @PrimaryKeyTypeData
     private int id;
     @VarcharTypeData
@@ -34,6 +35,14 @@ public class Table1 extends SQLiteLIB<Table1> {
     public String table2_name;
 
     public Table1() {}
+
+    public Table1(String name, double rating, String desc, int flag_active, String created_at) {
+        this.name = name;
+        this.rating = rating;
+        this.desc = desc;
+        this.flag_active = flag_active;
+        this.created_at = created_at;
+    }
 
     public Table1(int id, String name, double rating, String desc, int flag_active, String created_at) {
         this.id = id;
