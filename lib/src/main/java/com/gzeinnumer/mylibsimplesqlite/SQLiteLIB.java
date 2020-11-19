@@ -308,7 +308,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
 
     @Override
     public boolean deleteData(Class<T> clss, SQLiteDatabase myDb, String condition) {
-        StringBuilder query = new StringBuilder("DELETE FROM ");
+//        StringBuilder query = new StringBuilder("DELETE FROM ");
 
         String tableName = "";
         if (clss.isAnnotationPresent(SQLiteTable.class)) {
@@ -323,20 +323,21 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             logD("countData: Annotation SQLiteTable Not Found");
             return false;
         }
-        query.append(tableName);
+//        query.append(tableName);
 
         if (clss.getDeclaredFields().length == 0){
             logD("deleteData: Annotation Entity Not Found");
             return false;
         }
 
-        if (condition.length() > 0) {
-            query.append(" WHERE ").append(condition);
-        }
-        query.append(";");
+//        if (condition.length() > 0) {
+//            query.append(" WHERE ").append(condition);
+//        }
+//        query.append(";");
 
         try {
-            myDb.execSQL(query.toString());
+            myDb.delete(tableName, condition, new String[]{});
+//            myDb.execSQL(query.toString());
             return true;
         } catch (Exception e) {
             e.printStackTrace();
