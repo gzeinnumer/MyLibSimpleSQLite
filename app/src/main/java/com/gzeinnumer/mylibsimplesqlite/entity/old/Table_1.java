@@ -5,7 +5,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.util.Log;
 
-import com.gzeinnumer.mylibsqlite.helper.GblVariabel;
+import com.gzeinnumer.mylibsimplesqlite.helper.GblVariabel;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -5,8 +5,8 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.gzeinnumer.mylibsqlite.entity.Table1;
-import com.gzeinnumer.mylibsqlite.helper.GblVariabel;
+import com.gzeinnumer.mylibsimplesqlite.entity.Table1;
+import com.gzeinnumer.mylibsimplesqlite.helper.GblVariabel;
 
 public class TestActivity extends AppCompatActivity {
 
