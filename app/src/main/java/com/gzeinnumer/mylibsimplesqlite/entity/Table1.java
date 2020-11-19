@@ -64,7 +64,7 @@ public class Table1 extends SQLiteLIB<Table1> {
     }
 
     public boolean delete() {
-        String condition = "id='500'";                        //for single condition
+        String condition = "id='501'";                        //for single condition
         //String condition = "id='1' AND flag_Active='1'";    //for multi condition
         return deleteData(Table1.class, GblVariabel.myDb, condition);
     }
