@@ -136,6 +136,8 @@ You can make it more simple with this `Annotation`
 > After
 ```java
 @PrimaryKeyTypeData private int id;              // for Primary key
+                                                 // Default AutoIncrement true
+                                                 // @PrimaryKeyTypeData(autoGenerate = false) to disable
 @VarcharTypeData    private String name;         // for Varchar
 @DecimalTypeData    private double rating;       // for Decimal/Real
 @TextTypeData       private String desc;         // for String
