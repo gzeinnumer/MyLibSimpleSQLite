@@ -44,8 +44,8 @@ public class TestActivity extends AppCompatActivity {
 
 //        boolean istrue = table1.insert(new Table1(500, "Zein", 1.3, "Decs", 1,"2020-12-12"));
 //        boolean istrue = table1.insert(new Table1(null, 1.3, "Decs", 1,"2020-12-12"));
-        boolean istrue = table1.insert(new Table1(null, 0, "Decs", 1,"2020-12-12"));
-        Log.d(TAG, "onCreate3: "+istrue);
+//        boolean istrue = table1.insert(new Table1(null, 0, "Decs", 1,"2020-12-12"));
+//        Log.d(TAG, "onCreate3: "+istrue);
 
 //        boolean istrue2 = table1.update(new Table1(500, "Zein", 1.6, "Decs", 1,"2020-11-11"));
 //        Log.d(TAG, "onCreate4: "+istrue2);
