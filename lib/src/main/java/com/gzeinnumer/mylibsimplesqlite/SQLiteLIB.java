@@ -308,8 +308,6 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
 
     @Override
     public boolean deleteData(Class<T> clss, SQLiteDatabase myDb, String condition) {
-//        StringBuilder query = new StringBuilder("DELETE FROM ");
-
         String tableName = "";
         if (clss.isAnnotationPresent(SQLiteTable.class)) {
             SQLiteTable SQLiteTable = clss.getAnnotation(SQLiteTable.class);
@@ -323,21 +321,14 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             logD("countData: Annotation SQLiteTable Not Found");
             return false;
         }
-//        query.append(tableName);
 
         if (clss.getDeclaredFields().length == 0){
             logD("deleteData: Annotation Entity Not Found");
             return false;
         }
 
-//        if (condition.length() > 0) {
-//            query.append(" WHERE ").append(condition);
-//        }
-//        query.append(";");
-
         try {
             myDb.delete(tableName, condition, new String[]{});
-//            myDb.execSQL(query.toString());
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -379,7 +370,10 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                     field = removeLast(press(f.toString()));
                     key.add(field);
                     try {
-                        value.add(String.valueOf(f.get(data)));
+                        if (f.get(data) != null)
+                            value.add(String.valueOf(f.get(data)));
+                        else
+                            value.add(null);
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
                         logD(e.getMessage());
@@ -391,7 +385,10 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                 field = removeLast(press(f.toString()));
                 key.add(field);
                 try {
-                    value.add(String.valueOf(f.get(data)));
+                    if (f.get(data) != null)
+                        value.add(String.valueOf(f.get(data)));
+                    else
+                        value.add(null);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                     logD(e.getMessage());
@@ -402,7 +399,10 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                 field = removeLast(press(f.toString()));
                 key.add(field);
                 try {
-                    value.add(String.valueOf(f.get(data)));
+                    if (f.get(data) != null)
+                        value.add(String.valueOf(f.get(data)));
+                    else
+                        value.add(null);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                     logD(e.getMessage());
@@ -413,7 +413,10 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                 field = removeLast(press(f.toString()));
                 key.add(field);
                 try {
-                    value.add(String.valueOf(f.get(data)));
+                    if (f.get(data) != null)
+                        value.add(String.valueOf(f.get(data)));
+                    else
+                        value.add(null);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                     logD(e.getMessage());
@@ -424,7 +427,10 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                 field = removeLast(press(f.toString()));
                 key.add(field);
                 try {
-                    value.add(String.valueOf(f.get(data)));
+                    if (f.get(data) != null)
+                        value.add(String.valueOf(f.get(data)));
+                    else
+                        value.add(null);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                     logD(e.getMessage());
@@ -435,7 +441,10 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                 field = removeLast(press(f.toString()));
                 key.add(field);
                 try {
-                    value.add(String.valueOf(f.get(data)));
+                    if (f.get(data) != null)
+                        value.add(String.valueOf(f.get(data)));
+                    else
+                        value.add(null);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                     logD(e.getMessage());
@@ -486,7 +495,10 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                 field = removeLast(press(f.toString()));
                 key.add(field);
                 try {
-                    value.add(String.valueOf(f.get(data)));
+                    if (f.get(data) != null)
+                        value.add(String.valueOf(f.get(data)));
+                    else
+                        value.add(null);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                     logD(e.getMessage());
@@ -497,7 +509,10 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                 field = removeLast(press(f.toString()));
                 key.add(field);
                 try {
-                    value.add(String.valueOf(f.get(data)));
+                    if (f.get(data) != null)
+                        value.add(String.valueOf(f.get(data)));
+                    else
+                        value.add(null);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                     logD(e.getMessage());
@@ -508,7 +523,10 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                 field = removeLast(press(f.toString()));
                 key.add(field);
                 try {
-                    value.add(String.valueOf(f.get(data)));
+                    if (f.get(data) != null)
+                        value.add(String.valueOf(f.get(data)));
+                    else
+                        value.add(null);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                     logD(e.getMessage());
@@ -519,7 +537,10 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                 field = removeLast(press(f.toString()));
                 key.add(field);
                 try {
-                    value.add(String.valueOf(f.get(data)));
+                    if (f.get(data) != null)
+                        value.add(String.valueOf(f.get(data)));
+                    else
+                        value.add(null);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                     logD(e.getMessage());
@@ -530,7 +551,10 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                 field = removeLast(press(f.toString()));
                 key.add(field);
                 try {
-                    value.add(String.valueOf(f.get(data)));
+                    if (f.get(data) != null)
+                        value.add(String.valueOf(f.get(data)));
+                    else
+                        value.add(null);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                     logD(e.getMessage());
