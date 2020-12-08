@@ -223,6 +223,7 @@ public boolean update(Table_1 data){
 ```java
 //no need to write WHERE, i will write it for you, just type your condition
 public boolean update() {
+    //set your value to update
     Table1 data = new Table1();
     data.setName("Name Update");
     data.setDesc("Desc Update");
@@ -231,7 +232,7 @@ public boolean update() {
     String condition = "id='500'";                            //for single condition
     //String condition = "id='500' AND flag_Active='1'";      //for multi condition
 
-    String[] fieldToUpdate = new String[]{"name","desc","flag_active"};
+    String[] fieldToUpdate = new String[]{"name","desc","flag_active"}; // put all field that you want to update
 
     return updatedData(Table1.class, GblVariabel.myDb, data, condition, fieldToUpdate);  // return true/false
 }
