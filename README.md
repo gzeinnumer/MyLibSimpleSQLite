@@ -12,7 +12,7 @@
 </h1>
 
 <div align="center">
-    <a><img src="https://img.shields.io/badge/Version-1.0.8-brightgreen.svg?style=flat"></a>
+    <a><img src="https://img.shields.io/badge/Version-1.0.9-brightgreen.svg?style=flat"></a>
     <a><img src="https://img.shields.io/badge/ID-gzeinnumer-blue.svg?style=flat"></a>
     <a><img src="https://img.shields.io/badge/Java-Suport-green?logo=java&style=flat"></a>
     <a><img src="https://img.shields.io/badge/Koltin-Suport-green?logo=kotlin&style=flat"></a>
@@ -222,10 +222,18 @@ public boolean update(Table_1 data){
 > After
 ```java
 //no need to write WHERE, i will write it for you, just type your condition
-public boolean update(Table1 data) {
+public boolean update() {
+    Table1 data = new Table1();
+    data.setName("Name Update");
+    data.setDesc("Desc Update");
+    data.setFlag_active(1);
+
     String condition = "id='500'";                            //for single condition
     //String condition = "id='500' AND flag_Active='1'";      //for multi condition
-    return updatedData(Table1.class, GblVariabel.myDb, data, condition);  // return true/false
+
+    String[] fieldToUpdate = new String[]{"name","desc","flag_active"};
+
+    return updatedData(Table1.class, GblVariabel.myDb, data, condition, fieldToUpdate);  // return true/false
 }
 ```
 
@@ -313,12 +321,12 @@ public ArrayList<Table_1> read(){
 > After
 ```java
 //type 1
-public int count() {
+public int read() {
     return readData(Table_1.class, GblVariabel.myDb);
 }
 
 //type 2 no need to write WHERE, i will write it for you, just type your condition
-public int count() {
+public int read() {
     String condition = "id='500'";                        //for single condition
     //String condition = "id='500' AND flag_Active='1'";    //for multi condition
 
@@ -396,6 +404,8 @@ Entity New Verion
   - First Release
 - **1.0.6**
   - Kotlin Version
+- **1.0.9**
+  - Bug On Update
 
 ---
 

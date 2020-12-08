@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.gzeinnumer.mylibsimplesqlite.entity.Table1;
 import com.gzeinnumer.mylibsimplesqlite.helper.GblVariabel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -55,6 +56,11 @@ public class TestActivity extends AppCompatActivity {
       
 //        boolean istrue3 = table1.delete();
 //        Log.d(TAG, "onCreate: "+istrue3);
-      
+
+//        Table1 data = new Table1();
+//        data.setName("Name Update");
+//        data.setDesc("Desc Update");
+//        data.setFlag_active(1);
+//        table1.update(data);
     }
 }

@@ -21,6 +21,7 @@ import com.gzeinnumer.mylibsimplesqlite.typeData.VarcharTypeData;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -466,7 +467,8 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
         }
     }
 
-    public boolean updatedData(Class<T> clss, SQLiteDatabase myDb, T data, String whereCondition) {
+    @Override
+    public boolean updatedData(Class<T> clss, SQLiteDatabase myDb, T data, String whereCondition, String... fieldToUpdate) {
         String tableName = "";
         if (clss.isAnnotationPresent(SQLiteTable.class)) {
             SQLiteTable SQLiteTable = clss.getAnnotation(SQLiteTable.class);
@@ -486,78 +488,91 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             return false;
         }
 
+        ArrayList<String> fields = new ArrayList<>(Arrays.asList(fieldToUpdate));
+
         List<String> value = new ArrayList<>();
-        List<String> key = new ArrayList<>();String field = "";
+        List<String> key = new ArrayList<>();
+        String field = "";
         for (Field f : clss.getDeclaredFields()) {
             f.setAccessible(true);
             IntegerTypeData _int = f.getAnnotation(IntegerTypeData.class);
             if (_int != null) {
                 field = removeLast(press(f.toString()));
-                key.add(field);
-                try {
-                    if (f.get(data) != null)
-                        value.add(String.valueOf(f.get(data)));
-                    else
-                        value.add(null);
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                    logD(e.getMessage());
+                if (fields.contains(field)){
+                    key.add(field);
+                    try {
+                        if (f.get(data) != null)
+                            value.add(String.valueOf(f.get(data)));
+                        else
+                            value.add(null);
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                        logD(e.getMessage());
+                    }
                 }
             }
             VarcharTypeData varcharTypeData = f.getAnnotation(VarcharTypeData.class);
             if (varcharTypeData != null) {
                 field = removeLast(press(f.toString()));
-                key.add(field);
-                try {
-                    if (f.get(data) != null)
-                        value.add(String.valueOf(f.get(data)));
-                    else
-                        value.add(null);
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                    logD(e.getMessage());
+                if (fields.contains(field)) {
+                    key.add(field);
+                    try {
+                        if (f.get(data) != null)
+                            value.add(String.valueOf(f.get(data)));
+                        else
+                            value.add(null);
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                        logD(e.getMessage());
+                    }
                 }
             }
             TimeStampTypeData timestamp = f.getAnnotation(TimeStampTypeData.class);
             if (timestamp != null) {
                 field = removeLast(press(f.toString()));
-                key.add(field);
-                try {
-                    if (f.get(data) != null)
-                        value.add(String.valueOf(f.get(data)));
-                    else
-                        value.add(null);
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                    logD(e.getMessage());
+                if (fields.contains(field)) {
+                    key.add(field);
+                    try {
+                        if (f.get(data) != null)
+                            value.add(String.valueOf(f.get(data)));
+                        else
+                            value.add(null);
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                        logD(e.getMessage());
+                    }
                 }
             }
             DecimalTypeData decimalTypeData = f.getAnnotation(DecimalTypeData.class);
             if (decimalTypeData != null){
                 field = removeLast(press(f.toString()));
-                key.add(field);
-                try {
-                    if (f.get(data) != null)
-                        value.add(String.valueOf(f.get(data)));
-                    else
-                        value.add(null);
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                    logD(e.getMessage());
+                if (fields.contains(field)) {
+                    key.add(field);
+                    try {
+                        if (f.get(data) != null)
+                            value.add(String.valueOf(f.get(data)));
+                        else
+                            value.add(null);
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                        logD(e.getMessage());
+                    }
                 }
             }
             TextTypeData textTypeData = f.getAnnotation(TextTypeData.class);
             if (textTypeData != null){
                 field = removeLast(press(f.toString()));
-                key.add(field);
-                try {
-                    if (f.get(data) != null)
-                        value.add(String.valueOf(f.get(data)));
-                    else
-                        value.add(null);
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                    logD(e.getMessage());
+                if (fields.contains(field)) {
+                    key.add(field);
+                    try {
+                        if (f.get(data) != null)
+                            value.add(String.valueOf(f.get(data)));
+                        else
+                            value.add(null);
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                        logD(e.getMessage());
+                    }
                 }
             }
         }
