@@ -321,7 +321,7 @@ public class Table1 extends SQLiteLIB<Table1> {
 ```
 
 #
-### 8. Query Result
+### 9. Query Result
 > Lets see [Boilerplate Code Query Result](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/README_Query_Result.md)
 
 > Simple Code
