@@ -157,6 +157,7 @@ private String table2_name;
 > Simple Code
 
 ```java
+//INSERT INTO table1 (name, rating, desc, flag_active, created_at) VALUES ('Zein', '10.0.', 'Android Programmer', '1', '12-12-2020');
 public boolean insert() {
     Table1 data = new Table1();
     data.setName("Zein");
@@ -175,14 +176,15 @@ public boolean insert() {
 
 > Simple Code
 ```java
-//no need to write WHERE, i will write it for you, just type your condition
+//UPDATE table1 SET name='Name Update', desc='Desc Update', flag_active='' WHERE id='1';
 public boolean update() {
     //set your value to update
     Table1 data = new Table1();
     data.setName("Name Update");
     data.setDesc("Desc Update");
-    data.setFlag_active(1);
+    data.setFlag_active(0);
 
+    //no need to write WHERE, i will write it for you, just type your condition
     String condition = "id='500'";                            //for single condition
     //String condition = "id='500' AND flag_Active='1'";      //for multi condition
 
@@ -202,9 +204,10 @@ public boolean update() {
 
 > Simple Code
 ```java
-//no need to write WHERE, i will write it for you, just type your condition
+//DELETE FROM table1 WHERE id='500';
 public boolean delete() {
-    String condition = "id='1=500'";                        //for single condition
+    //no need to write WHERE, i will write it for you, just type your condition
+    String condition = "id='500'";                          //for single condition
     //String condition = "id='500' AND flag_Active='1'";    //for multi condition
     //String condition = "1";                               //to delete all data
     return deleteData(Table1.class, GblVariabel.myDb, condition);
@@ -217,13 +220,14 @@ public boolean delete() {
 
 > Simple Code
 ```java
-//type 1 count all
+//type 1 SELECT COUNT(*) FROM table1;
 public int count() {
     return countData(Table1.class, GblVariabel.myDb);
 }
 
-//type 2 no need to write WHERE, i will write it for you, just type your condition
+//type 2 SELECT COUNT(*) FROM table1 WHERE flag_Active='1';
 public int count() {
+    //no need to write WHERE, i will write it for you, just type your condition
     String condition = "id='500'";                        //for single condition
     //String condition = "id='500' AND flag_Active='1'";    //for multi condition
     return countData(Table1.class, GblVariabel.myDb, condition);
@@ -236,14 +240,15 @@ public int count() {
 
 > Simple Code
 ```java
-//type 1 read all
+//type 1 SElECT * FROM table1;
 public List<Table1> read() {
     return readData(Table1.class, GblVariabel.myDb);
 }
 
-//type 2 no need to write WHERE, i will write it for you, just type your condition
+//type 2 SELECT * FROM table1 WHERE flag_active='1';
 public List<Table1> read() {
-    String condition = "id='500'";                        //for single condition
+    //no need to write WHERE, i will write it for you, just type your condition
+    String condition = "id='500'";                         //for single condition
     //String condition = "id='500' AND flag_Active='1'";    //for multi condition
 
     return readData(Table1.class, GblVariabel.myDb, condition);

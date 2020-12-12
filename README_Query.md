@@ -1,8 +1,8 @@
 ### Query
 ```java
 @SuppressLint("Recycle")
-public List<Table_1> query(){
-    List<Table_1> current = new ArrayList<>();
+public List<Table1_OLD> query(){
+    List<Table1_OLD> current = new ArrayList<>();
     String query ="SELECT table1.*, table2.name AS table2_name FROM table1 JOIN table2 ON table2.id_table1 = table1.id;";
     Cursor cursor = GblVariabel.myDb.rawQuery(query, null);
     if (cursor.getCount() > 0) {

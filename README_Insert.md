@@ -1,7 +1,7 @@
 ### Insert
 ```java
 public boolean insert(){
-    Table_1 data = new Table_1();
+    Table_1 data = new Table1_OLD();
     data.setName("Zein");
     data.setRating(10.0);
     data.setDesc("Android Programmer");

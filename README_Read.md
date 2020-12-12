@@ -1,8 +1,8 @@
 ### Read
 ```java
-public List<Table_1> read(){
+public List<Table1_OLD> read(){
     Cursor cursor;
-    ArrayList<Table_1> data = new ArrayList<>();
+    ArrayList<Table1_OLD> data = new ArrayList<>();
     cursor = GblVariabel.myDb.rawQuery("SELECT * FROM " + TABLE , null);
     if(cursor.getCount() > 0){
         while (cursor.moveToNext()){

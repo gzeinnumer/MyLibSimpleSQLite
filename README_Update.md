@@ -1,7 +1,7 @@
 ### Update
 ```java
 public boolean update(){
-    Table_1 data = new Table_1();
+    Table1_OLD data = new Table1_OLD();
     data.setName("Zein");
     data.setRating(10.0);
     data.setDesc("Android Programmer");
