@@ -17,6 +17,12 @@ public class Table1_OLD {
     private int flag_active;
     private String created_at;
     private String table2_name;
+
+    //contructor
+    //getter setter
+
+    ...
+
 }
 ```
 

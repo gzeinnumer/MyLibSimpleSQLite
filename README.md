@@ -122,19 +122,28 @@ public class Table1 extends SQLiteLIB<Table1> {
 Declare Entity. You can make it more simple with this `Annotation`
 - `@PrimaryKeyTypeData` or `@VarcharTypeData` or `@IntegerTypeData` or `@TimeStampTypeData` or `@TextTypeData` or `@DoubleTypeData` or `@JoinColumnTypeData`
 ```java
-@PrimaryKeyTypeData private int id;              // for Primary key
-                                                 // Default AutoIncrement true
-                                                 // @PrimaryKeyTypeData(autoGenerate = false) to disable
-@VarcharTypeData    private String name;         // for Varchar
-@DecimalTypeData    private double rating;       // for Decimal/Real
-@TextTypeData       private String desc;         // for String
-@IntegerTypeData    private int flag_active;     // for Integer
-@TimeStampTypeData  private String created_at;   // for String
+@SQLiteTable(tableName = "table1")
+public class Table1 extends SQLiteLIB<Table1> {
+    @PrimaryKeyTypeData private int id;              // for Primary key
+                                                     // Default AutoIncrement true
+                                                     // @PrimaryKeyTypeData(autoGenerate = false) to disable
+    @VarcharTypeData    private String name;         // for Varchar
+    @DecimalTypeData    private double rating;       // for Decimal/Real
+    @TextTypeData       private String desc;         // for String
+    @IntegerTypeData    private int flag_active;     // for Integer
+    @TimeStampTypeData  private String created_at;   // for String
 
-// for join column from other table
-//@JoinColumn(withTable = "table2", columnName = "name")
-@JoinColumn(withTable = "table2", columnName = "name", alias = "table2_name")
-private String table2_name;
+    // for join column from other table
+    //@JoinColumn(withTable = "table2", columnName = "name")
+    @JoinColumn(withTable = "table2", columnName = "name", alias = "table2_name")
+    private String table2_name;
+
+    //contructor
+    //getter setter
+
+    ...
+
+}
 ```
 **Notes :**
 - `@PrimaryKeyTypeData` : Your variable type should `int`.
@@ -157,16 +166,25 @@ private String table2_name;
 > Simple Code
 
 ```java
-//INSERT INTO table1 (name, rating, desc, flag_active, created_at) VALUES ('Zein', '10.0.', 'Android Programmer', '1', '12-12-2020');
-public boolean insert() {
-    Table1 data = new Table1();
-    data.setName("Zein");
-    data.setRating(10.0);
-    data.setDesc("Android Programmer");
-    data.setFlag_active(1);
-    data.setCreated_at("12-12-2020");
+@SQLiteTable(tableName = "table1")
+public class Table1 extends SQLiteLIB<Table1> {
 
-    return insertData(Table1.class, GblVariabel.myDb, data);
+    ...
+
+    //INSERT INTO table1 (name, rating, desc, flag_active, created_at) VALUES ('Zein', '10.0.', 'Android Programmer', '1', '12-12-2020');
+    public boolean insert() {
+        Table1 data = new Table1();
+        data.setName("Zein");
+        data.setRating(10.0);
+        data.setDesc("Android Programmer");
+        data.setFlag_active(1);
+        data.setCreated_at("12-12-2020");
+
+        return insertData(Table1.class, GblVariabel.myDb, data);
+    }
+
+    ...
+
 }
 ```
 
@@ -176,25 +194,34 @@ public boolean insert() {
 
 > Simple Code
 ```java
-//UPDATE table1 SET name='Name Update', desc='Desc Update', flag_active='' WHERE id='1';
-public boolean update() {
-    //set your value to update
-    Table1 data = new Table1();
-    data.setName("Name Update");
-    data.setDesc("Desc Update");
-    data.setFlag_active(0);
+@SQLiteTable(tableName = "table1")
+public class Table1 extends SQLiteLIB<Table1> {
 
-    //no need to write WHERE, i will write it for you, just type your condition
-    String condition = "id='500'";                            //for single condition
-    //String condition = "id='500' AND flag_Active='1'";      //for multi condition
+    ...
 
-    String[] fieldToUpdate = new String[]{
-        "name",
-        "desc",
-        "flag_active"
-    }; // put all field that you want to update
+    //UPDATE table1 SET name='Name Update', desc='Desc Update', flag_active='' WHERE id='1';
+    public boolean update() {
+        //set your value to update
+        Table1 data = new Table1();
+        data.setName("Name Update");
+        data.setDesc("Desc Update");
+        data.setFlag_active(0);
 
-    return updatedData(Table1.class, GblVariabel.myDb, data, condition, fieldToUpdate);  // return true/false
+        //no need to write WHERE, i will write it for you, just type your condition
+        String condition = "id='500'";                            //for single condition
+        //String condition = "id='500' AND flag_Active='1'";      //for multi condition
+
+        String[] fieldToUpdate = new String[]{
+            "name",
+            "desc",
+            "flag_active"
+        }; // put all field that you want to update
+
+        return updatedData(Table1.class, GblVariabel.myDb, data, condition, fieldToUpdate);  // return true/false
+    }
+
+    ...
+
 }
 ```
 
@@ -204,13 +231,22 @@ public boolean update() {
 
 > Simple Code
 ```java
-//DELETE FROM table1 WHERE id='500';
-public boolean delete() {
-    //no need to write WHERE, i will write it for you, just type your condition
-    String condition = "id='500'";                          //for single condition
-    //String condition = "id='500' AND flag_Active='1'";    //for multi condition
-    //String condition = "1";                               //to delete all data
-    return deleteData(Table1.class, GblVariabel.myDb, condition);
+@SQLiteTable(tableName = "table1")
+public class Table1 extends SQLiteLIB<Table1> {
+
+    ...
+
+    //DELETE FROM table1 WHERE id='500';
+    public boolean delete() {
+        //no need to write WHERE, i will write it for you, just type your condition
+        String condition = "id='500'";                          //for single condition
+        //String condition = "id='500' AND flag_Active='1'";    //for multi condition
+        //String condition = "1";                               //to delete all data
+        return deleteData(Table1.class, GblVariabel.myDb, condition);
+    }
+
+    ...
+
 }
 ```
 
@@ -220,17 +256,26 @@ public boolean delete() {
 
 > Simple Code
 ```java
-//type 1 SELECT COUNT(*) FROM table1;
-public int count() {
-    return countData(Table1.class, GblVariabel.myDb);
-}
+@SQLiteTable(tableName = "table1")
+public class Table1 extends SQLiteLIB<Table1> {
 
-//type 2 SELECT COUNT(*) FROM table1 WHERE flag_Active='1';
-public int count() {
-    //no need to write WHERE, i will write it for you, just type your condition
-    String condition = "id='500'";                        //for single condition
-    //String condition = "id='500' AND flag_Active='1'";    //for multi condition
-    return countData(Table1.class, GblVariabel.myDb, condition);
+    ...
+
+    //type 1 SELECT COUNT(*) FROM table1;
+    public int count() {
+        return countData(Table1.class, GblVariabel.myDb);
+    }
+
+    //type 2 SELECT COUNT(*) FROM table1 WHERE flag_Active='1';
+    public int count() {
+        //no need to write WHERE, i will write it for you, just type your condition
+        String condition = "id='500'";                        //for single condition
+        //String condition = "id='500' AND flag_Active='1'";    //for multi condition
+        return countData(Table1.class, GblVariabel.myDb, condition);
+    }
+
+    ...
+
 }
 ```
 
@@ -240,18 +285,27 @@ public int count() {
 
 > Simple Code
 ```java
-//type 1 SElECT * FROM table1;
-public List<Table1> read() {
-    return readData(Table1.class, GblVariabel.myDb);
-}
+@SQLiteTable(tableName = "table1")
+public class Table1 extends SQLiteLIB<Table1> {
 
-//type 2 SELECT * FROM table1 WHERE flag_active='1';
-public List<Table1> read() {
-    //no need to write WHERE, i will write it for you, just type your condition
-    String condition = "id='500'";                         //for single condition
-    //String condition = "id='500' AND flag_Active='1'";    //for multi condition
+    ...
 
-    return readData(Table1.class, GblVariabel.myDb, condition);
+    //type 1 SElECT * FROM table1;
+    public List<Table1> read() {
+        return readData(Table1.class, GblVariabel.myDb);
+    }
+
+    //type 2 SELECT * FROM table1 WHERE flag_active='1';
+    public List<Table1> read() {
+        //no need to write WHERE, i will write it for you, just type your condition
+        String condition = "id='500'";                         //for single condition
+        //String condition = "id='500' AND flag_Active='1'";    //for multi condition
+
+        return readData(Table1.class, GblVariabel.myDb, condition);
+    }
+
+    ...
+
 }
 ```
 
@@ -261,13 +315,24 @@ public List<Table1> read() {
 
 > Simple Code
 ```java
-//dont forget to write this to
-@JoinColumn(withTable = "table2", columnName = "name", alias = "table2_name")
-private String table2_name;
+@SQLiteTable(tableName = "table1")
+public class Table1 extends SQLiteLIB<Table1> {
 
-public List<Table1> query(){
-    String query ="SELECT table1.*, table2.name AS table2_name FROM table1 JOIN table2 ON table2.id_table1 = table1.id;";
-    return queryData(Table1.class, GblVariabel.myDb, query);
+    ...
+
+    //dont forget to write this to
+    @JoinColumn(withTable = "table2", columnName = "name", alias = "table2_name")
+    private String table2_name;
+
+    ...
+
+    public List<Table1> query(){
+        String query ="SELECT table1.*, table2.name AS table2_name FROM table1 JOIN table2 ON table2.id_table1 = table1.id;";
+        return queryData(Table1.class, GblVariabel.myDb, query);
+    }
+
+    ...
+
 }
 ```
 **Notes :**
