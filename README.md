@@ -1,11 +1,11 @@
 
 | ![](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/preview/example1.JPG) | ![](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/preview/example2.JPG) |
 |---|---|
-|Before|After|
+|Before|Simple Code|
 
 | ![](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/preview/example3.JPG) | ![](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/preview/example4.JPG) |
 |---|---|
-|Before|After|
+|Before|Simple Code|
 
 <h1 align="center">
   MyLibSimpleSQLite - Simple SQLite
@@ -103,7 +103,7 @@ Here is my [DatabaseHelper](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob
 ---
 
 ### 1. Table
-You need to extends `SQLiteLIB<YourEntity>` to your `Entity Class`. And Use Annotation `@SQLiteTable(tableName = "you_table_name")` like this:
+You need to extends `SQLiteLIB<YourEntity>` to your `Entity Class`. And Use Annotation `@SQLiteTable(tableName = "your_table_name")` like this:
 ```java
 @SQLiteTable(tableName = "table1")
 public class Table1 extends SQLiteLIB<Table1> {
@@ -115,7 +115,7 @@ public class Table1 extends SQLiteLIB<Table1> {
 
 #
 ### 2. Entity
-> Before [Boilerplate Code Entity](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Entity.md)
+> [Boilerplate Code Entity](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Entity.md)
 
 Lets see Boilerplate Code
 
@@ -159,56 +159,33 @@ private String table2_name;
     - make sure your `alias` same like your `variable name` and your `query` -> `AS table2_name`.
 
 #
-### Insert
-> Before
+### 3. Insert
+> [Boilerplate Code Insert Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Insert.md)
+
+Lets see Boilerplate Code
+
+> Simple Code
+
 ```java
-public boolean insert(Table_1 data){
-    try {
-        ContentValues values = new ContentValues();
-        values.put(KEY_ID, data.getId());
-        values.put(KEY_NAME, data.getName());
-        values.put(KEY_RATING, data.getRating());
-        values.put(KEY_DESC, data.getDesc());
-        values.put(KEY_FLAG_ACTIVE, data.getFlag_active());
-        values.put(KEY_CREATED_AT, data.getCreated_at());
-        GblVariabel.myDb.insert(TABLE, null, values);
-        return true;
-    } catch (Exception e) {
-        Log.d(TAG, "insert: " + e.getMessage());
-        return false;
-    }
-}
-```
-> After
-```java
-public boolean insert(Table1 data) {
+public boolean insert() {
+    Table1 data = new Table1();
+    data.setName("Zein");
+    data.setRating(10.0);
+    data.setDesc("Android Programmer");
+    data.setFlag_active(1);
+    data.setCreated_at("12-12-2020");
+
     return insertData(Table1.class, GblVariabel.myDb, data);
 }
 ```
 
 #
-### Update
-> Before
-```java
-public boolean update(Table_1 data){
-    String whereCondition = "id = '500'";
-    ContentValues contentValues = new ContentValues();
-    contentValues.put(KEY_NAME, data.getName());
-    contentValues.put(KEY_RATING, data.getRating());
-    contentValues.put(KEY_DESC, data.getDesc());
-    contentValues.put(KEY_FLAG_ACTIVE, data.getFlag_active());
-    contentValues.put(KEY_CREATED_AT, data.getCreated_at());
-    long row = GblVariabel.myDb.update(TABLE, contentValues, whereCondition, null);
-    if (row > 0) {
-        Log.d(TAG, "update: success");
-        return true;
-    } else {
-        Log.d(TAG, "update: failed");
-        return false;
-    }
-}
-```
-> After
+### 4. Update
+> [Boilerplate Code Update Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Update.md)
+
+Lets see Boilerplate Code
+
+> Simple Code
 ```java
 //no need to write WHERE, i will write it for you, just type your condition
 public boolean update() {
@@ -228,22 +205,12 @@ public boolean update() {
 ```
 
 #
-### Delete
-> Before
-```java
-public boolean delete(){
-    String whereCondition = "WHERE id='500';";
-    try{
-        String query = "DELETE FROM " + TABLE + whereCondition;
-        GblVariabel.myDb.execSQL(query);
-        return true;
-    } catch (Exception e) {
-        Log.e(TAG, "deleted failed " + e.getMessage());
-        return false;
-    }
-}
-```
-> After
+### 5. Delete
+> [Boilerplate Code Update Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Delete.md)
+
+Lets see Boilerplate Code
+
+> Simple Code
 ```java
 //no need to write WHERE, i will write it for you, just type your condition
 public boolean delete() {
@@ -254,22 +221,12 @@ public boolean delete() {
 ```
 
 #
-### Count
-> Before
-```java
-public int count(){
-    int count = 0;
-    try {
-        Cursor cursor = GblVariabel.myDb.rawQuery("SELECT id FROM "+TABLE+" WHERE is_uploaded = '0'", null);
-        count = cursor.getCount();
-        cursor.close();
-    } catch (Exception e){
-        Log.d(TAG, "count: "+e.getMessage());
-    }
-    return count;
-}
-```
-> After
+### 6. Count
+> [Boilerplate Code Count Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Count.md)
+
+Lets see Boilerplate Code
+
+> Simple Code
 ```java
 //type 1
 public int count() {
@@ -285,38 +242,20 @@ public int count() {
 ```
 
 #
-### Read
-> Before
-```java
-public ArrayList<Table_1> read(){
-    Cursor cursor;
-    ArrayList<Table_1> data = new ArrayList<>();
-    cursor = GblVariabel.myDb.rawQuery("SELECT * FROM " + TABLE , null);
-    if(cursor.getCount() > 0){
-        while (cursor.moveToNext()){
-            Table_1 current = new Table_1();
-            current.id = cursor.getInt(cursor.getColumnIndex(this.KEY_ID));
-            current.name = cursor.getString(cursor.getColumnIndex(this.KEY_NAME));
-            current.rating = cursor.getInt(cursor.getColumnIndex(this.KEY_RATING));
-            current.desc = cursor.getString(cursor.getColumnIndex(this.KEY_DESC));
-            current.flag_active = cursor.getInt(cursor.getColumnIndex(this.KEY_FLAG_ACTIVE));
-            current.created_at = cursor.getString(cursor.getColumnIndex(this.KEY_CREATED_AT));
-            data.add(current);
-        }
-    }
-    cursor.close();
-    return data;
-}
-```
-> After
+### 7. Read
+> [Boilerplate Code Read Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Read.md)
+
+Lets see Boilerplate Code
+
+> Simple Code
 ```java
 //type 1
-public ArrayList<Table1> read() {
+public List<Table1> read() {
     return readData(Table_1.class, GblVariabel.myDb);
 }
 
 //type 2 no need to write WHERE, i will write it for you, just type your condition
-public ArrayList<Table1> read() {
+public List<Table1> read() {
     String condition = "id='500'";                        //for single condition
     //String condition = "id='500' AND flag_Active='1'";    //for multi condition
 
@@ -325,32 +264,10 @@ public ArrayList<Table1> read() {
 ```
 
 #
-### Query
-> Before
-```java
-@SuppressLint("Recycle")
-public List<Table_1> query(){
-    List<Table_1> current = new ArrayList<>();
-    String query ="SELECT table1.*, table2.name AS table2_name FROM table1 JOIN table2 ON table2.id_table1 = table1.id;";
-    Cursor cursor = GblVariabel.myDb.rawQuery(query, null);
-    if (cursor.getCount() > 0) {
-        cursor.moveToFirst();
-        while (cursor.moveToNext()){
-            Table_1 data = new Table_1();
-            data.id = cursor.getInt(cursor.getColumnIndex(this.KEY_ID));
-            data.name = cursor.getString(cursor.getColumnIndex(this.KEY_NAME));
-            data.rating = cursor.getInt(cursor.getColumnIndex(this.KEY_RATING));
-            data.desc = cursor.getString(cursor.getColumnIndex(this.KEY_DESC));
-            data.flag_active = cursor.getInt(cursor.getColumnIndex(this.KEY_FLAG_ACTIVE));
-            data.created_at = cursor.getString(cursor.getColumnIndex(this.KEY_CREATED_AT));
-            data.table2_name = cursor.getString(cursor.getColumnIndex(this.KEY_TABLE2_NAME));
-            current.add(data);
-        }
-    }
-    return current;
-}
-```
-> After
+### 8. Query
+> [Boilerplate Code Query Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Query.md)
+
+> Simple Code
 ```java
 //dont forget to write this to
 @JoinColumn(withTable = "table2", columnName = "name", alias = "table2_name")
@@ -362,7 +279,7 @@ public List<Table1> query(){
 }
 ```
 **Notes :**
-If you not find something that you need on function that i prepare for you before. You can use this function, and make your own query like `ORDER BY`, `GROUP BY`, `LEFT JOIN`, `RIGHT JOIN`, `DISTINC`, etc.
+If you not find something that you need on function that i prepare for you before. You can use function `queryData(....)`, and make your own query like `ORDER BY`, `GROUP BY`, `LEFT JOIN`, `RIGHT JOIN`, `DISTINC`, etc.
 
 ---
 Entity Old Verision

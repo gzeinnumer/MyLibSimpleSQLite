@@ -23,6 +23,12 @@ public class TestActivity extends AppCompatActivity {
 
         GblVariabel.initDb(getApplicationContext());
 
+        Table1 data = new Table1();
+        data.setName("Zein");
+        data.setRating(10.0);
+        data.setDesc("Android Programmer");
+        data.setFlag_active(1);
+        data.setCreated_at("12-12-2020");
         Table1 table1 = new Table1();
 
 //        List<Table1> list = table1.read();
