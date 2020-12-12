@@ -120,6 +120,7 @@ public class Table1 extends SQLiteLIB<Table1> {
 Lets see Boilerplate Code
 
 > Simple Code
+
 Declare Entity. You can make it more simple with this `Annotation`
 - `@PrimaryKeyTypeData` or `@VarcharTypeData` or `@IntegerTypeData` or `@TimeStampTypeData` or `@TextTypeData` or `@DoubleTypeData` or `@JoinColumnTypeData`
 ```java
