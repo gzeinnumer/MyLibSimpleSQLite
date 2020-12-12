@@ -172,7 +172,8 @@ public class Table1 extends SQLiteLIB<Table1> {
 
     ...
 
-    //INSERT INTO table1 (name, rating, desc, flag_active, created_at) VALUES ('Zein', '10.0.', 'Android Programmer', '1', '12-12-2020');
+    //INSERT INTO table1 (name, rating, desc, flag_active, created_at)
+    //VALUES ('Zein', '10.0', 'Android Programmer', '1', '12-12-2020');
     public boolean insert() {
         Table1 data = new Table1();
         data.setName("Zein");
@@ -197,7 +198,7 @@ public class Table1 extends SQLiteLIB<Table1> {
 
     ...
 
-    //UPDATE table1 SET name='Name Update', desc='Desc Update', flag_active='' WHERE id='1';
+    //UPDATE table1 SET name='Name Update', desc='Desc Update', flag_active='0' WHERE id='1';
     public boolean update() {
         //set your value to update
         Table1 data = new Table1();
@@ -318,9 +319,6 @@ public class Table1 extends SQLiteLIB<Table1> {
     }
 }
 ```
-**Notes :**
-If you not find something that you need on function that i prepare for you before. You can use function `queryData(....)`, and make your own query like `ORDER BY`, `GROUP BY`, `LEFT JOIN`, `RIGHT JOIN`, `DISTINC`, etc.
-
 
 #
 ### 8. Query Result

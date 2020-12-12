@@ -5,6 +5,8 @@ public class Table1_OLD {
 
     ...
 
+    //INSERT INTO table1 (name, rating, desc, flag_active, created_at)
+    //VALUES ('Zein', '10.0', 'Android Programmer', '1', '12-12-2020');
     public boolean insert(){
         Table_1 data = new Table1_OLD();
         data.setName("Zein");

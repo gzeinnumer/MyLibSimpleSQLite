@@ -6,8 +6,8 @@ public class Table1_OLD {
 
     public List<Table1_OLD> read(){
         Cursor cursor;
-        ArrayList<Table1_OLD> data = new ArrayList<>();
-        cursor = GblVariabel.myDb.rawQuery("SELECT * FROM " + TABLE , null);
+        List<Table1_OLD> data = new ArrayList<>();
+        cursor = GblVariabel.myDb.rawQuery("SELECT * FROM table1;", null);
         if(cursor.getCount() > 0){
             while (cursor.moveToNext()){
                 Table_1 current = new Table_1();
