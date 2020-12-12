@@ -1,6 +1,6 @@
 package com.gzeinnumer.mylibsimplesqlite.entity.old;
 
-public class Table_2 {
+public class Table2_OLD {
 
     private final String TABLE = "table1";
     private final String KEY_ID = "id";
@@ -11,10 +11,10 @@ public class Table_2 {
     private String name;
     private String table2_name;
 
-    public Table_2() {
+    public Table2_OLD() {
     }
 
-    public Table_2(int id, String name, String table2_name) {
+    public Table2_OLD(int id, String name, String table2_name) {
         this.id = id;
         this.name = name;
         this.table2_name = table2_name;
