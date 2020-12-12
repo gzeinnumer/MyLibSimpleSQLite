@@ -25,35 +25,34 @@ public class TestActivity extends AppCompatActivity {
 
         Table1 table1 = new Table1();
 
-//        List<Table1> list = table1.read();
-//        Log.d(TAG, "onCreate1: "+list.get(9).getFlag_active());
-//        Log.d(TAG, "onCreate1: "+list.size());
+        boolean istrue = table1.insert();
+        Log.d(TAG, "onCreate3: "+istrue);
 
-//        List<Table1> listQuery = table1.query();
-//        Log.d(TAG, "onCreate2: "+listQuery.get(0).getName());
-//        Log.d(TAG, "onCreate2: "+listQuery.get(0).getTable2_name());
+        boolean istrue2 = table1.update();
+        Log.d(TAG, "onCreate4: "+istrue2);
 
-//        boolean istrue = table1.insert(new Table1( "Zein", 1.3, "Decs", 1,"2020-12-12"));
-//        boolean istrue = table1.insert(new Table1(null, 1.3, "Decs", 1,"2020-12-12"));
-//        boolean istrue = table1.insert(new Table1(null, 0, "Decs", 1,"2020-12-12"));
-//        Log.d(TAG, "onCreate3: "+istrue);
+        boolean istrue3 = table1.delete();
+        Log.d(TAG, "onCreate6: "+istrue3);
 
-//        boolean istrue2 = table1.update(new Table1(500, "Zein", 1.6, "Decs", 1,"2020-11-11"));
-//        Log.d(TAG, "onCreate4: "+istrue2);
+        int count = table1.count();
+        Log.d(TAG, "onCreate5: "+count);
 
-//        int count = table1.count();
-//        Log.d(TAG, "onCreate5: "+count);
-      
-//        boolean istrue3 = table1.delete();
-//        Log.d(TAG, "onCreate6: "+istrue3);
+        int count2 = table1.count2();
+        Log.d(TAG, "onCreate5: "+count2);
 
-//        Table1 data = new Table1();
-//        data.setName("Name Update");
-//        data.setDesc("Desc Update");
-//        data.setFlag_active(1);
-//        table1.update(data);
+        List<Table1> read = table1.read();
+        Log.d(TAG, "onCreate1: "+read.get(0).getName());
+        Log.d(TAG, "onCreate1: "+read.size());
 
-        boolean isTrue4 = table1.queryResultUpdate();
-        Log.d(TAG, "onCreate7: "+isTrue4);
+        List<Table1> read2 = table1.read2();
+        Log.d(TAG, "onCreate1: "+read2.get(0).getName());
+        Log.d(TAG, "onCreate1: "+read2.size());
+
+        List<Table1> listQuery = table1.query();
+        Log.d(TAG, "onCreate2: "+listQuery.get(0).getName());
+        Log.d(TAG, "onCreate2: "+listQuery.get(0).getTable2_name());
+
+        boolean queryUpdate = table1.queryResultUpdate();
+        Log.d(TAG, "onCreate2: "+queryUpdate);
     }
 }

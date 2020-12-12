@@ -1,7 +1,5 @@
 package com.gzeinnumer.mylibsimplesqlite.entity;
 
-import android.database.sqlite.SQLiteDatabase;
-
 import com.gzeinnumer.mylibsimplesqlite.SQLiteLIB;
 import com.gzeinnumer.mylibsimplesqlite.helper.GblVariabel;
 import com.gzeinnumer.mylibsimplesqlite.struck.JoinColumn;
@@ -17,72 +15,89 @@ import java.util.List;
 
 @SQLiteTable(tableName = "table1")
 public class Table1 extends SQLiteLIB<Table1> {
+    @PrimaryKeyTypeData private int id;                 // for Primary key
+    // Default AutoIncrement true
+    // @PrimaryKeyTypeData(autoGenerate = false) to disable
+    @VarcharTypeData    private String name;            // for Varchar
+    @DecimalTypeData    private double rating;          // for Decimal/Real
+    @TextTypeData       private String desc;            // for String
+    @IntegerTypeData    private int flag_active;        // for Integer
+    @TimeStampTypeData  private String created_at;      // for String
 
-//    @PrimaryKeyTypeData(autoGenerate = false)
-    @PrimaryKeyTypeData
-    private int id;
-    @VarcharTypeData
-    private String name;
-    @DecimalTypeData
-    private double rating;
-    @TextTypeData
-    private String desc;
-    @IntegerTypeData
-    private int flag_active;
-    @TimeStampTypeData
-    private String created_at;
-
-//    @JoinColumn(withTable = "table2", columnName = "name")
+    // for join column from other table
+    //@JoinColumn(withTable = "table2", columnName = "name")
     @JoinColumn(withTable = "table2", columnName = "name", alias = "table2_name")
-    public String table2_name;
+    private String table2_name;
 
     public Table1() {}
 
-    public Table1(String name, double rating, String desc, int flag_active, String created_at) {
-        this.name = name;
-        this.rating = rating;
-        this.desc = desc;
-        this.flag_active = flag_active;
-        this.created_at = created_at;
-    }
+    //INSERT INTO table1 (name, rating, desc, flag_active, created_at) VALUES ('Zein', '10.0.', 'Android Programmer', '1', '12-12-2020');
+    public boolean insert() {
+        Table1 data = new Table1();
+        data.setName("Zein");
+        data.setRating(10.0);
+        data.setDesc("Android Programmer");
+        data.setFlag_active(1);
+        data.setCreated_at("12-12-2020");
 
-    public Table1(int id, String name, double rating, String desc, int flag_active, String created_at) {
-        this.id = id;
-        this.name = name;
-        this.rating = rating;
-        this.desc = desc;
-        this.flag_active = flag_active;
-        this.created_at = created_at;
-    }
-
-    public boolean insert(Table1 data) {
         return insertData(Table1.class, GblVariabel.myDb, data);
     }
 
-    public boolean update(Table1 data) {
-        String condition = "name is null";                    //for single condition
-        //String condition = "id='1' AND flag_Active='1'";    //for multi condition
-        String[] fieldToUpdate = new String[]{"name"};
+    //UPDATE table1 SET name='Name Update', desc='Desc Update', flag_active='' WHERE id='1';
+    public boolean update() {
+        //set your value to update
+        Table1 data = new Table1();
+        data.setName("Name Update");
+        data.setDesc("Desc Update");
+        data.setFlag_active(0);
+
+        //no need to write WHERE, i will write it for you, just type your condition
+        String condition = "id='500'";                            //for single condition
+        //String condition = "id='500' AND flag_Active='1'";      //for multi condition
+
+        String[] fieldToUpdate = new String[]{
+                "name",
+                "desc",
+                "flag_active"
+        }; // put all field that you want to update
+
         return updatedData(Table1.class, GblVariabel.myDb, data, condition, fieldToUpdate);  // return true/false
     }
 
+    //DELETE FROM table1 WHERE id='500';
     public boolean delete() {
-        String condition = "id='501'";                        //for single condition
-        //String condition = "id='1' AND flag_Active='1'";    //for multi condition
-//        String condition = "1";                               //to delete all data
+        //no need to write WHERE, i will write it for you, just type your condition
+        String condition = "id='500'";                          //for single condition
+        //String condition = "id='500' AND flag_Active='1'";    //for multi condition
+        //String condition = "1";                               //to delete all data
         return deleteData(Table1.class, GblVariabel.myDb, condition);
     }
 
+    //type 1 SELECT COUNT(*) FROM table1;
     public int count() {
-//        String condition = "id='1'";
-//        return countData(Table1.class, GblVariabel.myDb, condition);
         return countData(Table1.class, GblVariabel.myDb);
     }
 
+    //type 2 SELECT COUNT(*) FROM table1 WHERE flag_Active='1';
+    public int count2() {
+        //no need to write WHERE, i will write it for you, just type your condition
+        String condition = "id='500'";                          //for single condition
+        //String condition = "id='500' AND flag_Active='1'";    //for multi condition
+        return countData(Table1.class, GblVariabel.myDb, condition);
+    }
+
+    //type 1 SElECT * FROM table1;
     public List<Table1> read() {
-        String condition = "id='1' LIMIT 1";
+        return readData(Table1.class, GblVariabel.myDb);
+    }
+
+    //type 2 SELECT * FROM table1 WHERE flag_active='1';
+    public List<Table1> read2() {
+        //no need to write WHERE, i will write it for you, just type your condition
+        String condition = "id='500'";                         //for single condition
+        //String condition = "id='500' AND flag_Active='1'";    //for multi condition
+
         return readData(Table1.class, GblVariabel.myDb, condition);
-//        return readData(Table1.class, GblVariabel.myDb);
     }
 
     public List<Table1> query(){
