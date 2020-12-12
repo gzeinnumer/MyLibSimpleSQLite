@@ -478,7 +478,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
     }
 
     @Override
-    public boolean updatedData(Class<T> clss, SQLiteDatabase myDb, T data, String whereCondition, String... fieldToUpdate) {
+    public boolean updatedData(Class<T> clss, SQLiteDatabase myDb, T data, String whereCondition, String[] fieldToUpdate) {
         String tableName = "";
         if (clss.isAnnotationPresent(SQLiteTable.class)) {
             SQLiteTable SQLiteTable = clss.getAnnotation(SQLiteTable.class);
