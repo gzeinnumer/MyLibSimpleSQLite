@@ -102,7 +102,7 @@ Here is my [DatabaseHelper](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob
 
 ---
 
-### Table
+### 1. Table
 You need to extends `SQLiteLIB<YourEntity>` to your `Entity Class`. And Use Annotation `@SQLiteTable(tableName = "you_table_name")` like this:
 ```java
 @SQLiteTable(tableName = "table1")
@@ -114,9 +114,11 @@ public class Table1 extends SQLiteLIB<Table1> {
 ```
 
 #
-### Entity
+### 2. Entity
 > Before [Boilerplate Code Entity](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Entity.md)
+
 Lets see Boilerplate Code
+
 > Simple Code
 Declare Entity. You can make it more simple with this `Annotation`
 - `@PrimaryKeyTypeData` or `@VarcharTypeData` or `@IntegerTypeData` or `@TimeStampTypeData` or `@TextTypeData` or `@DoubleTypeData` or `@JoinColumnTypeData`
