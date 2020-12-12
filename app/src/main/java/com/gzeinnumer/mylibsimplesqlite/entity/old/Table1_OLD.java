@@ -10,7 +10,7 @@ import com.gzeinnumer.mylibsimplesqlite.helper.GblVariabel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Table_1 {
+public class Table1_OLD {
 
     private final String TABLE = "table1";
     private final String KEY_ID = "id";
@@ -31,9 +31,9 @@ public class Table_1 {
 
     private static final String TAG = "M_Category_Trainer";
 
-    public Table_1() {}
+    public Table1_OLD() {}
 
-    public Table_1(int id, String name, double rating, String desc, int flag_active, String created_at) {
+    public Table1_OLD(int id, String name, double rating, String desc, int flag_active, String created_at) {
         this.id = id;
         this.name = name;
         this.rating = rating;
@@ -42,7 +42,7 @@ public class Table_1 {
         this.created_at = created_at;
     }
 
-    public boolean insert(Table_1 data){
+    public boolean insert(Table1_OLD data){
         try {
             ContentValues values = new ContentValues();
             values.put(KEY_ID, data.getId());
@@ -59,7 +59,7 @@ public class Table_1 {
         }
     }
 
-    public boolean update(Table_1 data){
+    public boolean update(Table1_OLD data){
         String whereCondition = "id = '500'";
         ContentValues contentValues = new ContentValues();
         contentValues.put(KEY_NAME, data.getName());
@@ -101,13 +101,13 @@ public class Table_1 {
         return count;
     }
 
-    public ArrayList<Table_1> read(){
+    public ArrayList<Table1_OLD> read(){
         Cursor cursor;
-        ArrayList<Table_1> data = new ArrayList<>();
+        ArrayList<Table1_OLD> data = new ArrayList<>();
         cursor = GblVariabel.myDb.rawQuery("SELECT * FROM " + TABLE +" WHERE flag_active = '1'", null);
         if(cursor.getCount() > 0){
             while (cursor.moveToNext()){
-                Table_1 current = new Table_1();
+                Table1_OLD current = new Table1_OLD();
                 current.id = cursor.getInt(cursor.getColumnIndex(this.KEY_ID));
                 current.name = cursor.getString(cursor.getColumnIndex(this.KEY_NAME));
                 current.rating = cursor.getInt(cursor.getColumnIndex(this.KEY_RATING));
@@ -122,14 +122,14 @@ public class Table_1 {
     }
 
     @SuppressLint("Recycle")
-    public List<Table_1> query(){
-        List<Table_1> current = new ArrayList<>();
+    public List<Table1_OLD> query(){
+        List<Table1_OLD> current = new ArrayList<>();
         String query ="SELECT table1.*, table2.name AS table2_name FROM table1 JOIN table2 ON table2.id_table1 = table1.id;";
         Cursor cursor = GblVariabel.myDb.rawQuery(query, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             while (cursor.moveToNext()){
-                Table_1 data = new Table_1();
+                Table1_OLD data = new Table1_OLD();
                 data.id = cursor.getInt(cursor.getColumnIndex(this.KEY_ID));
                 data.name = cursor.getString(cursor.getColumnIndex(this.KEY_NAME));
                 data.rating = cursor.getInt(cursor.getColumnIndex(this.KEY_RATING));

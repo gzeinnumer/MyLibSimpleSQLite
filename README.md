@@ -251,7 +251,7 @@ Lets see Boilerplate Code
 ```java
 //type 1
 public List<Table1> read() {
-    return readData(Table_1.class, GblVariabel.myDb);
+    return readData(Table1.class, GblVariabel.myDb);
 }
 
 //type 2 no need to write WHERE, i will write it for you, just type your condition
@@ -259,7 +259,7 @@ public List<Table1> read() {
     String condition = "id='500'";                        //for single condition
     //String condition = "id='500' AND flag_Active='1'";    //for multi condition
 
-    return readData(Table_1.class, GblVariabel.myDb, condition);
+    return readData(Table1.class, GblVariabel.myDb, condition);
 }
 ```
 
@@ -283,8 +283,8 @@ If you not find something that you need on function that i prepare for you befor
 
 ---
 Entity Old Verision
-[Table_1](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/entity/old/Table_1.java)
- & [Table_2](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/entity/old/Table_2.java)
+[Table1_OLD](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/entity/old/Table1_OLD.java)
+ & [Table2_OLD](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/entity/old/Table2_OLD.java)
 
 Entity New Verion
 [Table1](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/entity/Table1.java)
