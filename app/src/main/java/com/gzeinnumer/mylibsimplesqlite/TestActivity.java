@@ -53,7 +53,7 @@ public class TestActivity extends AppCompatActivity {
 //        data.setFlag_active(1);
 //        table1.update(data);
 
-//        boolean isTrue4 = table1.queryResultUpdate();
-//        Log.d(TAG, "onCreate7: "+isTrue4);
+        boolean isTrue4 = table1.queryResultUpdate();
+        Log.d(TAG, "onCreate7: "+isTrue4);
     }
 }

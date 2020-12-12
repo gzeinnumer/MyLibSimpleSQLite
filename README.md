@@ -48,14 +48,15 @@ dependencies {
 ```
 
 ## Feature List
-- [x] [Entity](#entity)
-- [x] [Insert](#insert)
-- [x] [Update](#update)
-- [x] [Delete](#delete)
-- [x] [Count](#count)
-- [x] [Read](#read)
-- [x] [Query](#query) for Complex Query
-- [x] [Query Result](#query-result) return true/false
+- [x] [1. Table](#1-table)
+- [x] [2. Entity](#2-entity)
+- [x] [3. Insert](#3-insert)
+- [x] [4. Update](#4-update)
+- [x] [5. Delete](#5-delete)
+- [x] [6. Count](#6-count)
+- [x] [7. Read](#7-read)
+- [x] [8. Query Data](#8-query-data) for Complex Query. return List.
+- [x] [9. Query Result](#9-query-result) return true/false.
 - [ ] Create Table
 
 ---
@@ -182,9 +183,6 @@ public class Table1 extends SQLiteLIB<Table1> {
 
         return insertData(Table1.class, GblVariabel.myDb, data);
     }
-
-    ...
-
 }
 ```
 
@@ -219,9 +217,6 @@ public class Table1 extends SQLiteLIB<Table1> {
 
         return updatedData(Table1.class, GblVariabel.myDb, data, condition, fieldToUpdate);  // return true/false
     }
-
-    ...
-
 }
 ```
 
@@ -244,9 +239,6 @@ public class Table1 extends SQLiteLIB<Table1> {
         //String condition = "1";                               //to delete all data
         return deleteData(Table1.class, GblVariabel.myDb, condition);
     }
-
-    ...
-
 }
 ```
 
@@ -269,13 +261,10 @@ public class Table1 extends SQLiteLIB<Table1> {
     //type 2 SELECT COUNT(*) FROM table1 WHERE flag_Active='1';
     public int count() {
         //no need to write WHERE, i will write it for you, just type your condition
-        String condition = "id='500'";                        //for single condition
+        String condition = "id='500'";                          //for single condition
         //String condition = "id='500' AND flag_Active='1'";    //for multi condition
         return countData(Table1.class, GblVariabel.myDb, condition);
     }
-
-    ...
-
 }
 ```
 
@@ -303,14 +292,11 @@ public class Table1 extends SQLiteLIB<Table1> {
 
         return readData(Table1.class, GblVariabel.myDb, condition);
     }
-
-    ...
-
 }
 ```
 
 #
-### 8. Query
+### 8. Query Data
 > Lets see [Boilerplate Code Query Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Query.md)
 
 > Simple Code
@@ -330,9 +316,27 @@ public class Table1 extends SQLiteLIB<Table1> {
         String query ="SELECT table1.*, table2.name AS table2_name FROM table1 JOIN table2 ON table2.id_table1 = table1.id;";
         return queryData(Table1.class, GblVariabel.myDb, query);
     }
+}
+```
+**Notes :**
+If you not find something that you need on function that i prepare for you before. You can use function `queryData(....)`, and make your own query like `ORDER BY`, `GROUP BY`, `LEFT JOIN`, `RIGHT JOIN`, `DISTINC`, etc.
+
+
+#
+### 8. Query Result
+> Lets see [Boilerplate Code Query Result](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Query_Result.md)
+
+> Simple Code
+```java
+@SQLiteTable(tableName = "table1")
+public class Table1 extends SQLiteLIB<Table1> {
 
     ...
 
+    public boolean queryResultUpdate() {
+        String query = "UPDATE table1 SET flag_Active='2' where id='0'";
+        return queryResult(GblVariabel.myDb, query);
+    }
 }
 ```
 **Notes :**

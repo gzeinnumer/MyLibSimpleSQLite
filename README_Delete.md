@@ -5,9 +5,8 @@ public class Table1_OLD {
     ...
 
     public boolean delete(){
-        String whereCondition = "WHERE id='500';";
         try{
-            String query = "DELETE FROM table1 "+ whereCondition;
+            String query = "DELETE FROM table1 WHERE id='500';";
             GblVariabel.myDb.execSQL(query);
             return true;
         } catch (Exception e) {
