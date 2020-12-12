@@ -338,7 +338,7 @@ public class Table1 extends SQLiteLIB<Table1> {
 }
 ```
 **Notes :**
-If you not find something that you need on function that i prepare for you before. You can use function `queryData(....)`, and make your own query like `ORDER BY`, `GROUP BY`, `LEFT JOIN`, `RIGHT JOIN`, `DISTINC`, etc.
+You can use it to excecute `update` or `delete` query and give you `true/false` as return.
 
 ---
 Entity Old Verision
