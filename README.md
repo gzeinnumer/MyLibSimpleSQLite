@@ -206,7 +206,7 @@ public boolean update() {
 
 #
 ### 5. Delete
-> [Boilerplate Code Update Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Delete.md)
+> [Boilerplate Code Delete Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Delete.md)
 
 Lets see Boilerplate Code
 
