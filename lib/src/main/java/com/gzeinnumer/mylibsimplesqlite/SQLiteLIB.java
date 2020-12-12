@@ -339,8 +339,8 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
         }
 
         try {
-            myDb.delete(tableName, condition, new String[]{});
-            return true;
+            long res = myDb.delete(tableName, condition, new String[]{});
+            return res > 0;
         } catch (Exception e) {
             e.printStackTrace();
             logD(e.getMessage());
@@ -592,8 +592,8 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             for (int i = 0; i < key.size(); i++) {
                 values.put(key.get(i), value.get(i));
             }
-            myDb.update(tableName, values,whereCondition, new String[]{});
-            return true;
+            long res = myDb.update(tableName, values,whereCondition, new String[]{});
+            return res>0;
         } catch (Exception e) {
             e.printStackTrace();
             logD(e.getMessage());

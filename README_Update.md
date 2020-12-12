@@ -16,7 +16,7 @@ public class Table1_OLD {
         contentValues.put(KEY_DESC, data.getDesc());
         contentValues.put(KEY_FLAG_ACTIVE, data.getFlag_active());
 
-        String whereCondition = "id = '500'";
+        String whereCondition = "id = '1'";
 
         long row = GblVariabel.myDb.update(TABLE, contentValues, whereCondition, null);
 

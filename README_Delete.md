@@ -6,7 +6,7 @@ public class Table1_OLD {
 
     public boolean delete(){
         try{
-            String query = "DELETE FROM table1 WHERE id='500';";
+            String query = "DELETE FROM table1 WHERE id='1';";
             GblVariabel.myDb.execSQL(query);
             return true;
         } catch (Exception e) {

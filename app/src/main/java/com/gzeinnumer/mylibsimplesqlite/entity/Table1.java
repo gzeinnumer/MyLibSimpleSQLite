@@ -52,8 +52,8 @@ public class Table1 extends SQLiteLIB<Table1> {
         data.setFlag_active(0);
 
         //no need to write WHERE, i will write it for you, just type your condition
-        String condition = "id='500'";                            //for single condition
-        //String condition = "id='500' AND flag_Active='1'";      //for multi condition
+        String condition = "id='1'";                            //for single condition
+        //String condition = "id='1' AND flag_Active='1'";      //for multi condition
 
         String[] fieldToUpdate = new String[]{
                 "name",
@@ -64,11 +64,11 @@ public class Table1 extends SQLiteLIB<Table1> {
         return updatedData(Table1.class, GblVariabel.myDb, data, condition, fieldToUpdate);  // return true/false
     }
 
-    //DELETE FROM table1 WHERE id='500';
+    //DELETE FROM table1 WHERE id='1';
     public boolean delete() {
         //no need to write WHERE, i will write it for you, just type your condition
-        String condition = "id='500'";                          //for single condition
-        //String condition = "id='500' AND flag_Active='1'";    //for multi condition
+        String condition = "id='1'";                          //for single condition
+        //String condition = "id='1' AND flag_Active='1'";    //for multi condition
         //String condition = "1";                               //to delete all data
         return deleteData(Table1.class, GblVariabel.myDb, condition);
     }
@@ -81,8 +81,8 @@ public class Table1 extends SQLiteLIB<Table1> {
     //type 2 SELECT COUNT(*) FROM table1 WHERE flag_Active='1';
     public int count2() {
         //no need to write WHERE, i will write it for you, just type your condition
-        String condition = "id='500'";                          //for single condition
-        //String condition = "id='500' AND flag_Active='1'";    //for multi condition
+        String condition = "id='1'";                          //for single condition
+        //String condition = "id='1' AND flag_Active='1'";    //for multi condition
         return countData(Table1.class, GblVariabel.myDb, condition);
     }
 
@@ -94,8 +94,8 @@ public class Table1 extends SQLiteLIB<Table1> {
     //type 2 SELECT * FROM table1 WHERE flag_active='1';
     public List<Table1> read2() {
         //no need to write WHERE, i will write it for you, just type your condition
-        String condition = "id='500'";                         //for single condition
-        //String condition = "id='500' AND flag_Active='1'";    //for multi condition
+        String condition = "id='1'";                         //for single condition
+        //String condition = "id='1' AND flag_Active='1'";    //for multi condition
 
         return readData(Table1.class, GblVariabel.myDb, condition);
     }
@@ -106,7 +106,7 @@ public class Table1 extends SQLiteLIB<Table1> {
     }
 
     public boolean queryResultUpdate() {
-        String query = "UPDATE table1 SET flag_Active='2' where id='0'";
+        String query = "UPDATE table1 SET flag_Active='2' where id='1'";
         return queryResult(GblVariabel.myDb, query);
     }
 

@@ -12,7 +12,7 @@ public class Table1_OLD {
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             while (cursor.moveToNext()){
-                Table_1 data = new Table_1();
+                Table1_OLD data = new Table1_OLD();
                 data.id = cursor.getInt(cursor.getColumnIndex(this.KEY_ID));
                 data.name = cursor.getString(cursor.getColumnIndex(this.KEY_NAME));
                 data.rating = cursor.getInt(cursor.getColumnIndex(this.KEY_RATING));
