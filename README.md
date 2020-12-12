@@ -55,6 +55,7 @@ dependencies {
 - [x] [Count](#count)
 - [x] [Read](#read)
 - [x] [Query](#query) for Complex Query
+- [x] [Query Result](#query-result) return true/false
 - [ ] Create Table
 
 ---
@@ -322,12 +323,12 @@ public ArrayList<Table_1> read(){
 > After
 ```java
 //type 1
-public int read() {
+public ArrayList<Table1> read() {
     return readData(Table_1.class, GblVariabel.myDb);
 }
 
 //type 2 no need to write WHERE, i will write it for you, just type your condition
-public int read() {
+public ArrayList<Table1> read() {
     String condition = "id='500'";                        //for single condition
     //String condition = "id='500' AND flag_Active='1'";    //for multi condition
 

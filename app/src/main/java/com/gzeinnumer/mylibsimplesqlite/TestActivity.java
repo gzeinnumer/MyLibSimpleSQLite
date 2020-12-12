@@ -62,5 +62,12 @@ public class TestActivity extends AppCompatActivity {
 //        data.setDesc("Desc Update");
 //        data.setFlag_active(1);
 //        table1.update(data);
+
+//        boolean isTrue4 = table1.queryResultUpdate();
+//        Log.d(TAG, "onCreate6: "+isTrue4);
+//
+//        Table1 data = table1.getSingleData();
+//        Log.d(TAG, "onCreate7: "+data.getName());
+//        Log.d(TAG, "onCreate7: "+data.getDesc());
     }
 }

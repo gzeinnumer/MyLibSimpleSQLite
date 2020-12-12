@@ -79,14 +79,19 @@ public class Table1 extends SQLiteLIB<Table1> {
     }
 
     public List<Table1> read() {
-//        String condition = "id='1'";
-//        return readData(Table1.class, GblVariabel.myDb, condition);
-        return readData(Table1.class, GblVariabel.myDb);
+        String condition = "id='1' LIMIT 1";
+        return readData(Table1.class, GblVariabel.myDb, condition);
+//        return readData(Table1.class, GblVariabel.myDb);
     }
 
     public List<Table1> query(){
         String query ="SELECT table1.*, table2.name AS table2_name FROM table1 JOIN table2 ON table2.id_table1 = table1.id;";
         return queryData(Table1.class, GblVariabel.myDb, query);
+    }
+
+    public boolean queryResultUpdate() {
+        String query = "UPDATE table1 SET flag_Active='2' where id='0'";
+        return queryResult(GblVariabel.myDb, query);
     }
 
     public int getId() {
@@ -144,5 +149,4 @@ public class Table1 extends SQLiteLIB<Table1> {
     public void setTable2_name(String table2_name) {
         this.table2_name = table2_name;
     }
-
 }

@@ -308,6 +308,16 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
     }
 
     @Override
+    public boolean queryResult(SQLiteDatabase myDb, String query) {
+        try {
+            myDb.execSQL(query);
+            return true;
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    @Override
     public boolean deleteData(Class<T> clss, SQLiteDatabase myDb, String condition) {
         String tableName = "";
         if (clss.isAnnotationPresent(SQLiteTable.class)) {
