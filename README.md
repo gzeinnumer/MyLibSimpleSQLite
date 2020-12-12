@@ -137,23 +137,17 @@ Declare Entity. You can make it more simple with this `Annotation`
 private String table2_name;
 ```
 **Notes :**
-- `@PrimaryKeyTypeData` :
-  - Your variable type should `int`.
-- `@VarcharTypeData` :
-  - Your variable type should `String`.
-- `@IntegerTypeData` :
-  - Your variable type should `int`.
-- `@TimeStampTypeData` :
-  - Your variable type should `String`.
-- `@TextTypeData` :
-  - Your variable type should `String`.
-- `@DoubleTypeData` :
-  - Your variable type should `double`.
+- `@PrimaryKeyTypeData` : Your variable type should `int`.
+- `@VarcharTypeData` : Your variable type should `String`.
+- `@IntegerTypeData` : Your variable type should `int`.
+- `@TimeStampTypeData` : Your variable type should `String`.
+- `@TextTypeData` : Your variable type should `String`.
+- `@DoubleTypeData` : Your variable type should `double`.
 - `@JoinColumnTypeData` :
   - `withTable` = other table to join with current table.
   - `columnName` = realname on other table.
   - `alias` = if your `first table` and `second table` haven't same `column name`. you can ignore it.
-  - `alias` =  if your `first table` and `second table` have same `column name`, you can use this as alias. example `SELECT table1.name, table2.name AS table2_name FROM table1 JOIN ... ;`.
+  - `alias` = if your `first table` and `second table` have same `column name`, you can use this as alias. example `SELECT table1.name, table2.name AS table2_name FROM table1 JOIN ... ;`.
     - make sure your `alias` same like your `variable name` and your `query` -> `AS table2_name`.
 
 #
@@ -192,7 +186,11 @@ public boolean update() {
     String condition = "id='500'";                            //for single condition
     //String condition = "id='500' AND flag_Active='1'";      //for multi condition
 
-    String[] fieldToUpdate = new String[]{"name","desc","flag_active"}; // put all field that you want to update
+    String[] fieldToUpdate = new String[]{
+        "name",
+        "desc",
+        "flag_active"
+    }; // put all field that you want to update
 
     return updatedData(Table1.class, GblVariabel.myDb, data, condition, fieldToUpdate);  // return true/false
 }
@@ -208,6 +206,7 @@ public boolean update() {
 public boolean delete() {
     String condition = "id='1=500'";                        //for single condition
     //String condition = "id='500' AND flag_Active='1'";    //for multi condition
+    //String condition = "1";                               //to delete all data
     return deleteData(Table1.class, GblVariabel.myDb, condition);
 }
 ```
@@ -218,7 +217,7 @@ public boolean delete() {
 
 > Simple Code
 ```java
-//type 1
+//type 1 count all
 public int count() {
     return countData(Table1.class, GblVariabel.myDb);
 }
@@ -237,7 +236,7 @@ public int count() {
 
 > Simple Code
 ```java
-//type 1
+//type 1 read all
 public List<Table1> read() {
     return readData(Table1.class, GblVariabel.myDb);
 }
