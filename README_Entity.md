@@ -1,5 +1,4 @@
 ### Entity
-> Before [Boilerplate Code Entity](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_1.md)
 ```java
 private final String TABLE = "table1";
 private final String KEY_ID = "id";

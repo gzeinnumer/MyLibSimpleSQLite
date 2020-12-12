@@ -100,6 +100,9 @@ Here is my [DatabaseHelper](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob
 
 **Or you can use your own configuration to connect to Database, just make sure you have access to your `local database`. [ReadMore](https://developer.android.com/training/data-storage/sqlite?hl=id)**.
 
+---
+
+### Table
 You need to extends `SQLiteLIB<YourEntity>` to your `Entity Class`. And Use Annotation `@SQLiteTable(tableName = "you_table_name")` like this:
 ```java
 @SQLiteTable(tableName = "table1")
@@ -112,9 +115,11 @@ public class Table1 extends SQLiteLIB<Table1> {
 
 #
 ### Entity
+> Before [Boilerplate Code Entity](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Entity.md)
+Lets see Boilerplate Code
+> Simple Code
 Declare Entity. You can make it more simple with this `Annotation`
 - `@PrimaryKeyTypeData` or `@VarcharTypeData` or `@IntegerTypeData` or `@TimeStampTypeData` or `@TextTypeData` or `@DoubleTypeData` or `@JoinColumnTypeData`
-> Simple Code
 ```java
 @PrimaryKeyTypeData private int id;              // for Primary key
                                                  // Default AutoIncrement true
