@@ -115,9 +115,7 @@ public class Table1 extends SQLiteLIB<Table1> {
 
 #
 ### 2. Entity
-> [Boilerplate Code Entity](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Entity.md)
-
-Lets see Boilerplate Code
+> Lets see [Boilerplate Code Entity](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Entity.md)
 
 > Simple Code
 
@@ -160,9 +158,7 @@ private String table2_name;
 
 #
 ### 3. Insert
-> [Boilerplate Code Insert Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Insert.md)
-
-Lets see Boilerplate Code
+> Lets see [Boilerplate Code Insert Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Insert.md)
 
 > Simple Code
 
@@ -181,9 +177,7 @@ public boolean insert() {
 
 #
 ### 4. Update
-> [Boilerplate Code Update Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Update.md)
-
-Lets see Boilerplate Code
+> Lets see [Boilerplate Code Update Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Update.md)
 
 > Simple Code
 ```java
@@ -206,9 +200,7 @@ public boolean update() {
 
 #
 ### 5. Delete
-> [Boilerplate Code Delete Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Delete.md)
-
-Lets see Boilerplate Code
+> Lets see [Boilerplate Code Delete Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Delete.md)
 
 > Simple Code
 ```java
@@ -222,9 +214,7 @@ public boolean delete() {
 
 #
 ### 6. Count
-> [Boilerplate Code Count Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Count.md)
-
-Lets see Boilerplate Code
+> Lets see [Boilerplate Code Count Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Count.md)
 
 > Simple Code
 ```java
@@ -243,9 +233,7 @@ public int count() {
 
 #
 ### 7. Read
-> [Boilerplate Code Read Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Read.md)
-
-Lets see Boilerplate Code
+> Lets see [Boilerplate Code Read Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Read.md)
 
 > Simple Code
 ```java
@@ -265,7 +253,7 @@ public List<Table1> read() {
 
 #
 ### 8. Query
-> [Boilerplate Code Query Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Query.md)
+> Lets see [Boilerplate Code Query Data](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/dev/README_Query.md)
 
 > Simple Code
 ```java
