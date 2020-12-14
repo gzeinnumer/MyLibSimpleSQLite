@@ -12,7 +12,7 @@
 </h1>
 
 <div align="center">
-    <a><img src="https://img.shields.io/badge/Version-2.0.5-brightgreen.svg?style=flat"></a>
+    <a><img src="https://img.shields.io/badge/Version-2.0.6-brightgreen.svg?style=flat"></a>
     <a><img src="https://img.shields.io/badge/ID-gzeinnumer-blue.svg?style=flat"></a>
     <a><img src="https://img.shields.io/badge/Java-Suport-green?logo=java&style=flat"></a>
     <a><img src="https://img.shields.io/badge/Koltin-Suport-green?logo=kotlin&style=flat"></a>
@@ -206,9 +206,8 @@ public class Table1 extends SQLiteLIB<Table1> {
         data.setDesc("Desc Update");
         data.setFlag_active(0);
 
-        //no need to write WHERE, i will write it for you, just type your condition
-        String condition = "id='1'";                            //for single condition
-        //String condition = "id='1' AND flag_Active='1'";      //for multi condition
+        String condition = "WHERE id='1'";                            //for single condition
+        //String condition = "WHERE id='1' AND flag_Active='1'";      //for multi condition
 
         String[] fieldToUpdate = new String[]{
             "name",
@@ -234,10 +233,9 @@ public class Table1 extends SQLiteLIB<Table1> {
 
     //DELETE FROM table1 WHERE id='1';
     public boolean delete() {
-        //no need to write WHERE, i will write it for you, just type your condition
-        String condition = "id='1'";                          //for single condition
-        //String condition = "id='1' AND flag_Active='1'";    //for multi condition
-        //String condition = "1";                               //to delete all data
+        String condition = "WHERE id='1'";                            //for single condition
+        //String condition = "WHERE id='1' AND flag_Active='1'";      //for multi condition
+        //String condition = "WHERE 1";                               //to delete all data
         return deleteData(Table1.class, GblVariabel.myDb, condition);
     }
 }
@@ -261,9 +259,8 @@ public class Table1 extends SQLiteLIB<Table1> {
 
     //type 2 SELECT COUNT(*) FROM table1 WHERE flag_Active='1';
     public int count() {
-        //no need to write WHERE, i will write it for you, just type your condition
-        String condition = "id='1'";                          //for single condition
-        //String condition = "id='1' AND flag_Active='1'";    //for multi condition
+        String condition = "WHERE id='1'";                          //for single condition
+        //String condition = "WHERE id='1' AND flag_Active='1'";    //for multi condition
         return countData(Table1.class, GblVariabel.myDb, condition);
     }
 }
@@ -287,9 +284,8 @@ public class Table1 extends SQLiteLIB<Table1> {
 
     //type 2 SELECT * FROM table1 WHERE flag_active='1';
     public List<Table1> read() {
-        //no need to write WHERE, i will write it for you, just type your condition
-        String condition = "id='1'";                         //for single condition
-        //String condition = "id='1' AND flag_Active='1'";    //for multi condition
+        String condition = "WHERE id='1'";                          //for single condition
+        //String condition = "WHERE id='1' AND flag_Active='1'";    //for multi condition
 
         return readData(Table1.class, GblVariabel.myDb, condition);
     }
@@ -332,7 +328,7 @@ public class Table1 extends SQLiteLIB<Table1> {
     ...
 
     public boolean queryResultUpdate() {
-        String query = "UPDATE table1 SET flag_Active='2' where id='1'";
+        String query = "UPDATE table1 SET flag_Active='2' WHERE id='1'";
         return queryResult(GblVariabel.myDb, query);
     }
 }
@@ -376,6 +372,8 @@ Entity New Verion
   - Add Feature queryResult()
 - **2.0.5**
   - Fixing Bug On Update Kotlin
+- **2.0.6**
+  - Remove Auto WHERE on All Query
 
 ---
 
