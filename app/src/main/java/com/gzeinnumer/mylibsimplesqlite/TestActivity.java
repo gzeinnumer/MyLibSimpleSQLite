@@ -40,20 +40,23 @@ public class TestActivity extends AppCompatActivity {
 //        int count2 = table1.count2();
 //        Log.d(TAG, "onCreate5: "+count2);
 
+//        int count3 = table1.queryCount();
+//        Log.d(TAG, "onCreate6: "+count3);
+
 //        List<Table1> read = table1.read();
-//        Log.d(TAG, "onCreate6: "+read.get(0).getName());
-//        Log.d(TAG, "onCreate6: "+read.size());
+//        Log.d(TAG, "onCreate7: "+read.get(0).getName());
+//        Log.d(TAG, "onCreate7: "+read.size());
 
 //        List<Table1> read2 = table1.read2();
-//        Log.d(TAG, "onCreate7: "+read2.get(0).getName());
-//        Log.d(TAG, "onCreate7: "+read2.size());
+//        Log.d(TAG, "onCreate8: "+read2.get(0).getName());
+//        Log.d(TAG, "onCreate8: "+read2.size());
 
 //        List<Table1> listQuery = table1.query();
-//        Log.d(TAG, "onCreate8: "+listQuery.get(0).getName());
-//        Log.d(TAG, "onCreate8: "+listQuery.get(0).getTable2_name());
-//        Log.d(TAG, "onCreate8: "+listQuery.size());
+//        Log.d(TAG, "onCreate9: "+listQuery.get(0).getName());
+//        Log.d(TAG, "onCreate9: "+listQuery.get(0).getTable2_name());
+//        Log.d(TAG, "onCreate9: "+listQuery.size());
 
 //        boolean queryUpdate = table1.queryResultUpdate();
-//        Log.d(TAG, "onCreate9: "+queryUpdate);
+//        Log.d(TAG, "onCreate10: "+queryUpdate);
     }
 }

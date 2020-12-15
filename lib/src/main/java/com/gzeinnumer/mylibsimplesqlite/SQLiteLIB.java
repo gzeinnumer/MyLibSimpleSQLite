@@ -3,6 +3,7 @@ package com.gzeinnumer.mylibsimplesqlite;
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -246,37 +247,37 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                     PrimaryKeyTypeData primaryKeyTypeData = f.getAnnotation(PrimaryKeyTypeData.class);
                     if (primaryKeyTypeData != null) {
                         field = removeLast(press(f.toString()));
-                        if (query.contains(field) || query.contains(tableName + ".*") || query.contains("*"))
+                        if (query.contains(field) || query.contains(tableName + ".*"))
                             hashMap.put(field, cursor.getInt(cursor.getColumnIndex(field)));
                     }
                     IntegerTypeData _int = f.getAnnotation(IntegerTypeData.class);
                     if (_int != null) {
                         field = removeLast(press(f.toString()));
-                        if (query.contains(field) || query.contains(tableName + ".*") || query.contains("*"))
+                        if (query.contains(field) || query.contains(tableName + ".*"))
                             hashMap.put(field, cursor.getInt(cursor.getColumnIndex(field)));
                     }
                     VarcharTypeData varcharTypeData = f.getAnnotation(VarcharTypeData.class);
                     if (varcharTypeData != null) {
                         field = removeLast(press(f.toString()));
-                        if (query.contains(field) || query.contains(tableName + ".*") || query.contains("*"))
+                        if (query.contains(field) || query.contains(tableName + ".*"))
                             hashMap.put(field, cursor.getString(cursor.getColumnIndex(field)));
                     }
                     TimeStampTypeData timestamp = f.getAnnotation(TimeStampTypeData.class);
                     if (timestamp != null) {
                         field = removeLast(press(f.toString()));
-                        if (query.contains(field) || query.contains(tableName + ".*") || query.contains("*"))
+                        if (query.contains(field) || query.contains(tableName + ".*"))
                             hashMap.put(field, cursor.getString(cursor.getColumnIndex(field)));
                     }
                     DecimalTypeData decimalTypeData = f.getAnnotation(DecimalTypeData.class);
                     if (decimalTypeData != null){
                         field = removeLast(press(f.toString()));
-                        if (query.contains(field) || query.contains(tableName + ".*") || query.contains("*"))
+                        if (query.contains(field) || query.contains(tableName + ".*"))
                             hashMap.put(field, cursor.getDouble(cursor.getColumnIndex(field)));
                     }
                     TextTypeData textTypeData = f.getAnnotation(TextTypeData.class);
                     if (textTypeData != null){
                         field = removeLast(press(f.toString()));
-                        if (query.contains(field) || query.contains(tableName + ".*") || query.contains("*"))
+                        if (query.contains(field) || query.contains(tableName + ".*"))
                             hashMap.put(field, cursor.getString(cursor.getColumnIndex(field)));
                     }
                     JoinColumn joinColumn = f.getAnnotation(JoinColumn.class);
@@ -308,13 +309,35 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
     }
 
     @Override
-    public boolean queryResult(SQLiteDatabase myDb, String query) {
+    public boolean queryResult(Class<T> clss, SQLiteDatabase myDb, String query) {
         try {
             myDb.execSQL(query);
             return true;
         } catch (Exception e){
             return false;
         }
+    }
+
+    @Override
+    public int queryCount(Class<T> clss, SQLiteDatabase myDb, String query) {
+        int count = 0;
+        if (clss.isAnnotationPresent(SQLiteTable.class)) {
+            SQLiteTable SQLiteTable = clss.getAnnotation(SQLiteTable.class);
+            if (SQLiteTable == null) {
+                logD("countData: Annotation SQLiteTable Not Found");
+                return count;
+            }
+        } else {
+            logD("countData: Annotation SQLiteTable Not Found");
+            return count;
+        }
+
+        if (clss.getDeclaredFields().length == 0){
+            logD("countData: Annotation Entity Not Found");
+            return count;
+        }
+
+        return (int) DatabaseUtils.longForQuery(myDb, query, null);
     }
 
     @Override
