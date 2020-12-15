@@ -11,8 +11,9 @@ public interface InterfaceDaoSQLite<T> {
     List<T> readData(Class<T> clss, SQLiteDatabase myDb);
     List<T> readData(Class<T> clss, SQLiteDatabase myDb, String condition);
     List<T> queryData(Class<T> clss, SQLiteDatabase myDb, String query);
-    boolean queryResult(SQLiteDatabase myDb, String query);
+    boolean queryResult(Class<T> clss, SQLiteDatabase myDb, String query);
     boolean deleteData(Class<T> clss, SQLiteDatabase myDb, String condition);
     boolean insertData(Class<T> clss, SQLiteDatabase myDb, T data);
     boolean updatedData(Class<T> clss, SQLiteDatabase myDb, T data, String whereCondition, String[] filedToUpdate);
+    int queryCount(Class<T> clss, SQLiteDatabase myDb, String query);
 }

@@ -12,7 +12,7 @@
 </h1>
 
 <div align="center">
-    <a><img src="https://img.shields.io/badge/Version-2.0.6-brightgreen.svg?style=flat"></a>
+    <a><img src="https://img.shields.io/badge/Version-2.0.7-brightgreen.svg?style=flat"></a>
     <a><img src="https://img.shields.io/badge/ID-gzeinnumer-blue.svg?style=flat"></a>
     <a><img src="https://img.shields.io/badge/Java-Suport-green?logo=java&style=flat"></a>
     <a><img src="https://img.shields.io/badge/Koltin-Suport-green?logo=kotlin&style=flat"></a>
@@ -263,6 +263,13 @@ public class Table1 extends SQLiteLIB<Table1> {
         //String condition = "WHERE id='1' AND flag_Active='1'";    //for multi condition
         return countData(Table1.class, GblVariabel.myDb, condition);
     }
+
+    //type 3 Your Custom Query
+    // SELECT COUNT(id) FROM table1 WHERE flag_Active='1';
+    public int queryCount() {
+        String query = "SELECT COUNT(id) FROM table1;";
+        return queryCount(Table1.class, GblVariabel.myDb, query);
+    }
 }
 ```
 
@@ -374,6 +381,8 @@ Entity New Verion
   - Fixing Bug On Update Kotlin
 - **2.0.6**
   - Remove Auto WHERE on All Query
+- **2.0.7**
+  - Add Feature queryCount()
 
 ---
 

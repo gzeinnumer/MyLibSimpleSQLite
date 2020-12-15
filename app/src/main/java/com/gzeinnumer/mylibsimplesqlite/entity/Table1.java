@@ -78,9 +78,16 @@ public class Table1 extends SQLiteLIB<Table1> {
 
     //type 2 SELECT COUNT(*) FROM table1 WHERE flag_Active='1';
     public int count2() {
-        String condition = "WHERE id='1'";                          //for single condition
+        String condition = "WHERE flag_active='1'";                 //for single condition
         //String condition = "WHERE id='1' AND flag_Active='1'";    //for multi condition
         return countData(Table1.class, GblVariabel.myDb, condition);
+    }
+
+    //type 3 Your Custom Query
+    // SELECT COUNT(id) FROM table1;
+    public int queryCount() {
+        String query = "SELECT COUNT(id) FROM table1;";
+        return queryCount(Table1.class, GblVariabel.myDb, query);
     }
 
     //type 1 SElECT * FROM table1;
@@ -103,7 +110,7 @@ public class Table1 extends SQLiteLIB<Table1> {
 
     public boolean queryResultUpdate() {
         String query = "UPDATE table1 SET flag_Active='2' WHERE id='1'";
-        return queryResult(GblVariabel.myDb, query);
+        return queryResult(Table1.class, GblVariabel.myDb, query);
     }
 
     public int getId() {
