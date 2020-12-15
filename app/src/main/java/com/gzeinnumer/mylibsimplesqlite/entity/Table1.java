@@ -97,7 +97,7 @@ public class Table1 extends SQLiteLIB<Table1> {
 
     //type 2 SELECT * FROM table1 WHERE flag_active='1';
     public List<Table1> read2() {
-        String condition = "WHERE id='1'";                         //for single condition
+        String condition = "WHERE flag_active='1'";                 //for single condition
         //String condition = "WHERE id='1' AND flag_Active='1'";    //for multi condition
 
         return readData(Table1.class, GblVariabel.myDb, condition);

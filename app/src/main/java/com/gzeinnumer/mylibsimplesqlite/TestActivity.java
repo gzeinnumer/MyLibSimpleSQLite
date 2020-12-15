@@ -34,14 +34,14 @@ public class TestActivity extends AppCompatActivity {
 //        boolean istrue3 = table1.delete();
 //        Log.d(TAG, "onCreate3: "+istrue3);
 
-        int count = table1.count();
-        Log.d(TAG, "onCreate4: "+count);
+//        int count = table1.count();
+//        Log.d(TAG, "onCreate4: "+count);
 
-        int count2 = table1.count2();
-        Log.d(TAG, "onCreate5: "+count2);
+//        int count2 = table1.count2();
+//        Log.d(TAG, "onCreate5: "+count2);
 
-        int count3 = table1.queryCount();
-        Log.d(TAG, "onCreate6: "+count3);
+//        int count3 = table1.queryCount();
+//        Log.d(TAG, "onCreate6: "+count3);
 
 //        List<Table1> read = table1.read();
 //        Log.d(TAG, "onCreate7: "+read.get(0).getName());
