@@ -36,7 +36,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
     }
 
     @Override
-    public int countData(Class<T> clss, SQLiteDatabase myDb, String condition) {
+    public int countData(Class<T> clss, SQLiteDatabase myDb, String whereCondition) {
         int count = 0;
 
         StringBuilder query = new StringBuilder("SELECT * FROM ");
@@ -66,8 +66,8 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             return count;
         }
 
-        if (condition.length() > 0) {
-            query.append(" ").append(condition);
+        if (whereCondition.length() > 0) {
+            query.append(" ").append(whereCondition);
         }
         query.append(";");
 
@@ -93,7 +93,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
 
     @Override
     @SuppressLint("Recycle")
-    public List<T> readData(Class<T> clss, SQLiteDatabase myDb, String condition) {
+    public List<T> readData(Class<T> clss, SQLiteDatabase myDb, String whereCondition) {
         List<T> list = new ArrayList<>();
 
         StringBuilder query = new StringBuilder("SELECT ");
@@ -163,8 +163,8 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
 
         query.append(" FROM ").append(tableName);
 
-        if (condition.length() > 0) {
-            query.append(" ").append(condition);
+        if (whereCondition.length() > 0) {
+            query.append(" ").append(whereCondition);
         }
 
         query.append(";");
@@ -387,7 +387,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
     }
 
     @Override
-    public boolean deleteData(Class<T> clss, SQLiteDatabase myDb, String condition) {
+    public boolean deleteData(Class<T> clss, SQLiteDatabase myDb, String whereCondition) {
         String tableName = "";
         if (clss.isAnnotationPresent(SQLiteTable.class)) {
             SQLiteTable SQLiteTable = clss.getAnnotation(SQLiteTable.class);
@@ -407,13 +407,17 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             return false;
         }
 
+        if(whereCondition.length()==0){
+            whereCondition = "1";
+        }
+
         if (myDb == null){
             logD("deleteData: SQLiteDatabase is null object references");
             return false;
         }
 
         try {
-            long res = myDb.delete(tableName, condition, new String[]{});
+            long res = myDb.delete(tableName, whereCondition, new String[]{});
             return res > 0;
         } catch (Exception e) {
             e.printStackTrace();
