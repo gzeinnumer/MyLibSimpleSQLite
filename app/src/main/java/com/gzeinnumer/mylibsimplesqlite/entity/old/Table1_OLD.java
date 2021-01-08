@@ -3,6 +3,7 @@ package com.gzeinnumer.mylibsimplesqlite.entity.old;
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.gzeinnumer.mylibsimplesqlite.helper.GblVariabel;
@@ -31,7 +32,13 @@ public class Table1_OLD {
 
     private static final String TAG = "M_Category_Trainer";
 
+    private SQLiteDatabase sqLiteDatabase;
+
     public Table1_OLD() {}
+
+    public Table1_OLD(SQLiteDatabase sqLiteDatabase) {
+        this.sqLiteDatabase = sqLiteDatabase;
+    }
 
     public Table1_OLD(int id, String name, double rating, String desc, int flag_active, String created_at) {
         this.id = id;
@@ -51,7 +58,7 @@ public class Table1_OLD {
             values.put(KEY_DESC, data.getDesc());
             values.put(KEY_FLAG_ACTIVE, data.getFlag_active());
             values.put(KEY_CREATED_AT, data.getCreated_at());
-            GblVariabel.myDb.insert(TABLE, null, values);
+            sqLiteDatabase.insert(TABLE, null, values);
             return true;
         } catch (Exception e) {
             Log.d(TAG, "insert: " + e.getMessage());
@@ -67,7 +74,7 @@ public class Table1_OLD {
         contentValues.put(KEY_DESC, data.getDesc());
         contentValues.put(KEY_FLAG_ACTIVE, data.getFlag_active());
         contentValues.put(KEY_CREATED_AT, data.getCreated_at());
-        long row = GblVariabel.myDb.update(TABLE, contentValues, whereCondition, null);
+        long row = sqLiteDatabase.update(TABLE, contentValues, whereCondition, null);
         if (row > 0) {
             Log.d(TAG, "update: success");
             return true;
@@ -81,7 +88,7 @@ public class Table1_OLD {
         String whereCondition = "WHERE id='500';";
         try{
             String query = "DELETE FROM " + TABLE + whereCondition;
-            GblVariabel.myDb.execSQL(query);
+            sqLiteDatabase.execSQL(query);
             return true;
         } catch (Exception e) {
             Log.e(TAG, "deleted failed " + e.getMessage());
@@ -92,7 +99,7 @@ public class Table1_OLD {
     public int count(){
         int count = 0;
         try {
-            Cursor cursor = GblVariabel.myDb.rawQuery("SELECT id FROM "+TABLE+" WHERE is_uploaded = '0'", null);
+            Cursor cursor = sqLiteDatabase.rawQuery("SELECT id FROM "+TABLE+" WHERE is_uploaded = '0'", null);
             count = cursor.getCount();
             cursor.close();
         } catch (Exception e){
@@ -104,7 +111,7 @@ public class Table1_OLD {
     public ArrayList<Table1_OLD> read(){
         Cursor cursor;
         ArrayList<Table1_OLD> data = new ArrayList<>();
-        cursor = GblVariabel.myDb.rawQuery("SELECT * FROM " + TABLE +" WHERE flag_active = '1'", null);
+        cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE +" WHERE flag_active = '1'", null);
         if(cursor.getCount() > 0){
             while (cursor.moveToNext()){
                 Table1_OLD current = new Table1_OLD();
@@ -125,7 +132,7 @@ public class Table1_OLD {
     public List<Table1_OLD> query(){
         List<Table1_OLD> current = new ArrayList<>();
         String query ="SELECT table1.*, table2.name AS table2_name FROM table1 JOIN table2 ON table2.id_table1 = table1.id;";
-        Cursor cursor = GblVariabel.myDb.rawQuery(query, null);
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             while (cursor.moveToNext()){

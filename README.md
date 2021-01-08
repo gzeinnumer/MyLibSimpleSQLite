@@ -72,28 +72,26 @@ dependencies {
 ---
 ## USE
 Please make sure you have access to your database with instance from `SQLiteDatabase`.
-here is my global variable. i will sent `GblVariabel.myDb` to function that i made.
+example :
 ```java
-public class GblVariabel {
-    private static final String TAG = "GblVariabel";
+public class TestActivity extends AppCompatActivity {
 
-    public static SQLiteDatabase myDb = null;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_test);
 
-    @SuppressLint("StaticFieldLeak")
-    public static DatabaseHelper dbHelper = null;
+        ...
 
-    public static void initDb(Context context) {
-        try {
-            dbHelper = new DatabaseHelper(context);
-            if (dbHelper.checkDatabase()) {
-                GblVariabel.myDb = dbHelper.openDataBase();
-            } else {
-                Log.e(TAG, "initDb:  database kosong");
-            }
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-            Log.e(TAG, "initDb: " + throwable.getMessage());
-        }
+        DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
+        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+
+        Table1 table1 = new Table1(database);
+
+        List<Table1> listData = table1.read(); //example calling function
+
+        ...
+
     }
 }
 ```
@@ -104,10 +102,20 @@ Here is my [DatabaseHelper](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob
 ---
 
 ### 1. Table
-You need to extends `SQLiteLIB<YourEntity>` to your `Entity Class`. And Use Annotation `@SQLiteTable(tableName = "your_table_name")` like this:
+You need to extends `SQLiteLIB<YourEntity>` to your `Entity Class`. And Use Annotation `@SQLiteTable(tableName = "your_table_name")`. Than make `contructor` like this:
 ```java
 @SQLiteTable(tableName = "table1")
 public class Table1 extends SQLiteLIB<Table1> {
+
+    ...
+
+    private SQLiteDatabase sqLiteDatabase;
+
+    public Table1() {}
+
+    public Table1(SQLiteDatabase sqLiteDatabase) {
+        this.sqLiteDatabase = sqLiteDatabase;
+    }
 
     ...
 
@@ -139,7 +147,14 @@ public class Table1 extends SQLiteLIB<Table1> {
     @JoinColumn(withTable = "table2", columnName = "name", alias = "table2_name")
     private String table2_name;
 
-    //contructor
+    private SQLiteDatabase sqLiteDatabase;
+
+    public Table1() {}
+
+    public Table1(SQLiteDatabase sqLiteDatabase) {
+        this.sqLiteDatabase = sqLiteDatabase;
+    }
+
     //getter setter
 
     ...
@@ -182,7 +197,7 @@ public class Table1 extends SQLiteLIB<Table1> {
         data.setFlag_active(1);
         data.setCreated_at("12-12-2020");
 
-        return insertData(Table1.class, GblVariabel.myDb, data);
+        return insertData(Table1.class, sqLiteDatabase, data); //return true/false
     }
 }
 ```
@@ -217,7 +232,7 @@ public class Table1 extends SQLiteLIB<Table1> {
             "flag_active"
         }; // put all field that you want to update
 
-        return updatedData(Table1.class, GblVariabel.myDb, data, condition, fieldToUpdate);  // return true/false
+        return updatedData(Table1.class, sqLiteDatabase, data, condition, fieldToUpdate);  // return true/false
     }
 }
 ```
@@ -240,7 +255,7 @@ public class Table1 extends SQLiteLIB<Table1> {
         String condition = "WHERE id='1'";                          //for single condition
         //String condition = "WHERE id='1' AND flag_Active='1'";    //for multi condition
 
-        return deleteData(Table1.class, GblVariabel.myDb, condition);
+        return deleteData(Table1.class, sqLiteDatabase, condition); //return true/false
     }
 }
 ```
@@ -258,21 +273,21 @@ public class Table1 extends SQLiteLIB<Table1> {
 
     //type 1 SELECT COUNT(*) FROM table1;
     public int count() {
-        return countData(Table1.class, GblVariabel.myDb);
+        return countData(Table1.class, sqLiteDatabase);
     }
 
     //type 2 SELECT COUNT(*) FROM table1 WHERE flag_Active='1';
     public int count() {
         String condition = "WHERE id='1'";                          //for single condition
         //String condition = "WHERE id='1' AND flag_Active='1'";    //for multi condition
-        return countData(Table1.class, GblVariabel.myDb, condition);
+        return countData(Table1.class, sqLiteDatabase, condition);
     }
 
     //type 3 Your Custom Query
     // SELECT COUNT(id) FROM table1 WHERE flag_Active='1';
     public int queryCount() {
         String query = "SELECT COUNT(id) FROM table1;";
-        return queryCount(Table1.class, GblVariabel.myDb, query);
+        return queryCount(Table1.class, sqLiteDatabase, query);
     }
 }
 ```
@@ -290,7 +305,7 @@ public class Table1 extends SQLiteLIB<Table1> {
 
     //type 1 SElECT * FROM table1;
     public List<Table1> read() {
-        return readData(Table1.class, GblVariabel.myDb);
+        return readData(Table1.class, sqLiteDatabase);
     }
 
     //type 2 SELECT * FROM table1 WHERE flag_active='1';
@@ -298,7 +313,7 @@ public class Table1 extends SQLiteLIB<Table1> {
         String condition = "WHERE flag_active='1'";                 //for single condition
         //String condition = "WHERE id='1' AND flag_Active='1'";    //for multi condition
 
-        return readData(Table1.class, GblVariabel.myDb, condition);
+        return readData(Table1.class, sqLiteDatabase, condition);
     }
 }
 ```
@@ -322,7 +337,7 @@ public class Table1 extends SQLiteLIB<Table1> {
 
     public List<Table1> query(){
         String query ="SELECT table1.*, table2.name AS table2_name FROM table1 JOIN table2 ON table2.id_table1 = table1.id;";
-        return queryData(Table1.class, GblVariabel.myDb, query);
+        return queryData(Table1.class, sqLiteDatabase, query);
     }
 }
 ```
@@ -340,7 +355,7 @@ public class Table1 extends SQLiteLIB<Table1> {
 
     public boolean queryResultUpdate() {
         String query = "UPDATE table1 SET flag_Active='2' WHERE id='1'";
-        return queryResult(GblVariabel.myDb, query);
+        return queryResult(sqLiteDatabase, query); //return true/false
     }
 }
 ```
@@ -357,7 +372,6 @@ Entity New Verion
  & [Table2](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/entity/Table2.java)
 
 [DatabaseHelper](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/helper/DatabaseHelper.java)
- & [GblVariabel](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/helper/GblVariabel.java)
 
 ---
 
