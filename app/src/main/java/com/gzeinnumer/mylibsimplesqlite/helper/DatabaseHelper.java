@@ -18,109 +18,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TAG = "DatabaseHelper";
 
     protected static final String DATABASE_NAME = "MyLibSQLiteSimple.db";
-    protected static final String DATABASE_NAME_ASSET = "MyLibSQLiteSimple.db";
-    protected static String DB_PATH = "";
     protected static final int DATABASE_VERSION = 4;
-    protected final Context context;
-    protected SQLiteDatabase myDataBase;
+
+    public DatabaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.d(TAG, "onCreate: ");
+        //Make table here
+
+        String CREATE_TABLE1 = "CREATE TABLE table1 (.....)";
+        db.execSQL(CREATE_TABLE1);
+
+        String CREATE_TABLE2 = "CREATE TABLE table2 (.....)";
+        db.execSQL(CREATE_TABLE2);
+
+        //read more ON to complete your query
+        //https://developer.android.com/training/data-storage/sqlite?hl=id
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.d(TAG, "onUpgrade: ");
-    }
-
-    public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.context = context;
-
-        DB_PATH = Environment.getExternalStorageDirectory().toString() + "/MyLibSQLite/";
-
-        Log.d(TAG, "DatabaseHelper: Database exist " + DB_PATH);
-
-        String myPath = DB_PATH + DATABASE_NAME;
-        File dbFile = new File(myPath);
-
-        if (dbFile.exists()) {
-            Log.d(TAG, "DatabaseHelper: Database exist");
-        } else {
-            if (!checkDatabase()) {
-                try {
-                    getReadableDatabase();
-                    copyDatabase();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    public boolean checkDatabase() {
-        boolean statusDB = false;
-        SQLiteDatabase checkDB = null;
-        String myPath = DB_PATH + DATABASE_NAME;
-        try {
-            if (new File(myPath).exists()) {
-                try {
-                    checkDB = SQLiteDatabase.openDatabase(myPath, null, 0);
-                    statusDB = true;
-                } catch (Exception e) {
-                    statusDB = false;
-                }
-            } else {
-                statusDB = false;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        if (checkDB != null) {
-            checkDB.close();
-        }
-        return statusDB;
-    }
-
-    public void createDatabase() throws IOException {
-        if (!checkDatabase()) {
-            getReadableDatabase();
-            copyDatabase();
-        }
-    }
-
-    private void copyDatabase() throws IOException {
-        InputStream myInput = this.context.getAssets().open(DATABASE_NAME_ASSET);
-        String copyPath = DB_PATH + DATABASE_NAME;
-        File outFile = this.context.getDatabasePath(copyPath);
-        outFile.delete();
-        OutputStream myOutput = new FileOutputStream(outFile);
-        byte[] buffer = new byte[1204];
-        while (true) {
-            int length = myInput.read(buffer);
-            if (length <= 0) {
-                myOutput.flush();
-                myOutput.close();
-                myInput.close();
-                
-                return;
-            }
-            myOutput.write(buffer, 0, length);
-        }
-    }
-
-    public SQLiteDatabase openDataBase() throws SQLException {
-        String openPath = DB_PATH + DATABASE_NAME;
-        this.myDataBase = SQLiteDatabase.openDatabase(openPath, null, 0);
-
-        return this.myDataBase;
-    }
-
-    public boolean deleteDatabase() {
-        String path = DB_PATH + DATABASE_NAME;
-        File file = new File(path);
-
-        return file.delete();
     }
 }

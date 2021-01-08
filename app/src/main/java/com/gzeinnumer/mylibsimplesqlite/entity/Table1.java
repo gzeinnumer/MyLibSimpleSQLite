@@ -1,5 +1,7 @@
 package com.gzeinnumer.mylibsimplesqlite.entity;
 
+import android.database.sqlite.SQLiteDatabase;
+
 import com.gzeinnumer.mylibsimplesqlite.SQLiteLIB;
 import com.gzeinnumer.mylibsimplesqlite.helper.GblVariabel;
 import com.gzeinnumer.mylibsimplesqlite.struck.JoinColumn;
@@ -29,7 +31,13 @@ public class Table1 extends SQLiteLIB<Table1> {
     @JoinColumn(withTable = "table2", columnName = "name", alias = "table2_name")
     private String table2_name;
 
+    private SQLiteDatabase sqLiteDatabase;
+
     public Table1() {}
+
+    public Table1(SQLiteDatabase sqLiteDatabase) {
+        this.sqLiteDatabase = sqLiteDatabase;
+    }
 
     //INSERT INTO table1 (name, rating, desc, flag_active, created_at) VALUES ('Zein', '10.0.', 'Android Programmer', '1', '12-12-2020');
     public boolean insert() {
@@ -40,7 +48,7 @@ public class Table1 extends SQLiteLIB<Table1> {
         data.setFlag_active(1);
         data.setCreated_at("12-12-2020");
 
-        return insertData(Table1.class, GblVariabel.myDb, data);
+        return insertData(Table1.class, sqLiteDatabase, data);
     }
 
     //UPDATE table1 SET name='Name Update', desc='Desc Update', flag_active='0' WHERE id='1';
@@ -62,7 +70,7 @@ public class Table1 extends SQLiteLIB<Table1> {
                 "flag_active"
         }; // put all field that you want to update
 
-        return updatedData(Table1.class, GblVariabel.myDb, data, condition, fieldToUpdate);  // return true/false
+        return updatedData(Table1.class, sqLiteDatabase, data, condition, fieldToUpdate);  // return true/false
     }
 
     //DELETE FROM table1 WHERE id='1';
@@ -72,12 +80,12 @@ public class Table1 extends SQLiteLIB<Table1> {
         String condition = "WHERE id='1'";                          //for single condition
         //String condition = "WHERE id='1' AND flag_Active='1'";    //for multi condition
 
-        return deleteData(Table1.class, GblVariabel.myDb, condition);
+        return deleteData(Table1.class, sqLiteDatabase, condition);
     }
 
     //type 1 SELECT COUNT(*) FROM table1;
     public int count() {
-        return countData(Table1.class, GblVariabel.myDb);
+        return countData(Table1.class, sqLiteDatabase);
     }
 
     //type 2 SELECT COUNT(*) FROM table1 WHERE flag_Active='1';
@@ -85,19 +93,19 @@ public class Table1 extends SQLiteLIB<Table1> {
         //String condition = "WHERE 1";                             //count all
         String condition = "WHERE flag_active='1'";                 //for single condition
         //String condition = "WHERE id='1' AND flag_Active='1'";    //for multi condition
-        return countData(Table1.class, GblVariabel.myDb, condition);
+        return countData(Table1.class, sqLiteDatabase, condition);
     }
 
     //type 3 Your Custom Query
     // SELECT COUNT(id) FROM table1;
     public int queryCount() {
         String query = "SELECT COUNT(id) FROM table1;";
-        return queryCount(Table1.class, GblVariabel.myDb, query);
+        return queryCount(Table1.class, sqLiteDatabase, query);
     }
 
     //type 1 SElECT * FROM table1;
     public List<Table1> read() {
-        return readData(Table1.class, GblVariabel.myDb);
+        return readData(Table1.class, sqLiteDatabase);
     }
 
     //type 2 SELECT * FROM table1 WHERE flag_active='1';
@@ -107,17 +115,17 @@ public class Table1 extends SQLiteLIB<Table1> {
         String condition = "WHERE flag_active='1'";                 //for single condition
         //String condition = "WHERE id='1' AND flag_Active='1'";    //for multi condition
 
-        return readData(Table1.class, GblVariabel.myDb, condition);
+        return readData(Table1.class, sqLiteDatabase, condition);
     }
 
     public List<Table1> query(){
         String query ="SELECT table1.*, table2.name AS table2_name FROM table1 JOIN table2 ON table2.id_table1 = table1.id;";
-        return queryData(Table1.class, GblVariabel.myDb, query);
+        return queryData(Table1.class, sqLiteDatabase, query);
     }
 
     public boolean queryResultUpdate() {
         String query = "UPDATE table1 SET flag_Active='2' WHERE id='1'";
-        return queryResult(Table1.class, GblVariabel.myDb, query);
+        return queryResult(Table1.class, sqLiteDatabase, query);
     }
 
     public int getId() {

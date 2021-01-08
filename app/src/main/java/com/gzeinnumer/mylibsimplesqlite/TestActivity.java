@@ -1,18 +1,17 @@
 package com.gzeinnumer.mylibsimplesqlite;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.gzeinnumer.mylibsimplesqlite.databinding.ActivityMainBinding;
 import com.gzeinnumer.mylibsimplesqlite.databinding.ActivityTestBinding;
 import com.gzeinnumer.mylibsimplesqlite.entity.Table1;
+import com.gzeinnumer.mylibsimplesqlite.helper.DatabaseHelper;
+import com.gzeinnumer.mylibsimplesqlite.helper.DatabaseHelperOLD;
 import com.gzeinnumer.mylibsimplesqlite.helper.GblVariabel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,7 +29,10 @@ public class TestActivity extends AppCompatActivity {
 
         GblVariabel.initDb(getApplicationContext());
 
-        Table1 table1 = new Table1();
+        DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
+        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+
+        Table1 table1 = new Table1(database);
 
         binding.btnInsert.setOnClickListener(view -> {
             boolean istrue = table1.insert();

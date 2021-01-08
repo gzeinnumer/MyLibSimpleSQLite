@@ -11,11 +11,11 @@ public class GblVariabel {
     public static SQLiteDatabase myDb = null;
 
     @SuppressLint("StaticFieldLeak")
-    public static DatabaseHelper dbHelper = null;
+    public static DatabaseHelperOLD dbHelper = null;
 
     public static void initDb(Context context) {
         try {
-            dbHelper = new DatabaseHelper(context);
+            dbHelper = new DatabaseHelperOLD(context);
             if (dbHelper.checkDatabase()) {
                 GblVariabel.myDb = dbHelper.openDataBase();
             } else {
