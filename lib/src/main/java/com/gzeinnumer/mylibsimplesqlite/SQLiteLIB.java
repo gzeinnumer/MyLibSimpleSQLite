@@ -108,7 +108,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                 tableName = SQLiteTable.tableName();
             }
         } else {
-            logD("countData: Annotation SQLiteTable Not Found");
+            logD("readData: Annotation SQLiteTable Not Found");
             return list;
         }
 
@@ -398,7 +398,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                 tableName = SQLiteTable.tableName();
             }
         } else {
-            logD("countData: Annotation SQLiteTable Not Found");
+            logD("deleteData: Annotation SQLiteTable Not Found");
             return false;
         }
 
@@ -572,7 +572,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                 tableName = SQLiteTable.tableName();
             }
         } else {
-            logD("countData: Annotation SQLiteTable Not Found");
+            logD("updatedData: Annotation SQLiteTable Not Found");
             return false;
         }
 
