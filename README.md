@@ -206,8 +206,10 @@ public class Table1 extends SQLiteLIB<Table1> {
         data.setDesc("Desc Update");
         data.setFlag_active(0);
 
-        String condition = "WHERE id='1'";                            //for single condition
-        //String condition = "WHERE id='1' AND flag_Active='1'";      //for multi condition
+        //No Need to Write WHERE, i will write it for you
+        //String condition = ""; // if no spesial condition
+        String condition = "id='1'";                            //for single condition
+        //String condition = "id='1' AND flag_Active='1'";      //for multi condition
 
         String[] fieldToUpdate = new String[]{
             "name",
