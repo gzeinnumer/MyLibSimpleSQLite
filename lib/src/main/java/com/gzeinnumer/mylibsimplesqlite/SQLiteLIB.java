@@ -411,6 +411,8 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             whereCondition = "1";
         }
 
+        whereCondition = removeWhere(whereCondition);
+
         if (myDb == null){
             logD("deleteData: SQLiteDatabase is null object references");
             return false;
@@ -590,6 +592,8 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             whereCondition = " 1";
         }
 
+        whereCondition = removeWhere(whereCondition);
+
         ArrayList<String> fields = new ArrayList<>(Arrays.asList(fieldToUpdate));
 
         List<String> value = new ArrayList<>();
@@ -707,5 +711,13 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
 
     private void logDQuery(String TAG, String msg){
         Log.d(TAG, msg);
+    }
+
+    private String removeWhere(String a){
+        String strTemp = a.toUpperCase();
+        String toRemove = "WHERE";
+        int x = strTemp.indexOf(toRemove);
+        if (x != -1) a = a.substring(0,x) + a.substring(x+toRemove.length(),a.length());
+        return a;
     }
 }
