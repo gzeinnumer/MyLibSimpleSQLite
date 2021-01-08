@@ -12,7 +12,7 @@
 </h1>
 
 <div align="center">
-    <a><img src="https://img.shields.io/badge/Version-2.0.8-brightgreen.svg?style=flat"></a>
+    <a><img src="https://img.shields.io/badge/Version-2.0.9-brightgreen.svg?style=flat"></a>
     <a><img src="https://img.shields.io/badge/ID-gzeinnumer-blue.svg?style=flat"></a>
     <a><img src="https://img.shields.io/badge/Java-Suport-green?logo=java&style=flat"></a>
     <a><img src="https://img.shields.io/badge/Koltin-Suport-green?logo=kotlin&style=flat"></a>
@@ -235,9 +235,11 @@ public class Table1 extends SQLiteLIB<Table1> {
 
     //DELETE FROM table1 WHERE id='1';
     public boolean delete() {
-        String condition = "WHERE id='1'";                            //for single condition
-        //String condition = "WHERE id='1' AND flag_Active='1'";      //for multi condition
-        //String condition = "WHERE 1";                               //to delete all data
+        //No Need to Write WHERE, i will write it for you
+        //String condition = ""; // if no spesial condition
+        String condition = "id='1'";                            //for single condition
+        //String condition = "id='1' AND flag_Active='1'";      //for multi condition
+        //String condition = "1";                               //to delete all data
         return deleteData(Table1.class, GblVariabel.myDb, condition);
     }
 }
@@ -386,6 +388,8 @@ Entity New Verion
 - **2.0.7**
   - Add Feature queryCount()
 - **2.0.8**
+  - Bug Fixing
+- **2.0.9**
   - Bug Fixing
 
 ---

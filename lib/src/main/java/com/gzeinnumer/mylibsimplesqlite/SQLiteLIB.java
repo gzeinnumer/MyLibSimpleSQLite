@@ -582,6 +582,10 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             return false;
         }
 
+        if (whereCondition.length()==0){
+            whereCondition = " 1";
+        }
+
         ArrayList<String> fields = new ArrayList<>(Arrays.asList(fieldToUpdate));
 
         List<String> value = new ArrayList<>();
