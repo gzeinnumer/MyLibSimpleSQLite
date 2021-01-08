@@ -364,14 +364,16 @@ You can use it to excecute `update` or `delete` query and give you `true/false` 
 
 ---
 Entity Old Verision
-[Table1_OLD](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/entity/old/Table1_OLD.java)
- & [Table2_OLD](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/entity/old/Table2_OLD.java)
+[Table1_OLD.java](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/entity/old/Table1_OLD.java)
+ & [Table2_OLD.java](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/entity/old/Table2_OLD.java)
 
 Entity New Verion
-[Table1](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/entity/Table1.java)
- & [Table2](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/entity/Table2.java)
+[Table1.java](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/entity/Table1.java)
+ & [Table2.java](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/entity/Table2.java)
 
-[DatabaseHelper](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/helper/DatabaseHelper.java)
+[DatabaseHelper.java](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/helper/DatabaseHelper.java)
+ & [TestActivity.java](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/TestActivity.java)
+ & [activity_test.xml](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/res/layout/activity_test.xml)
 
 ---
 
