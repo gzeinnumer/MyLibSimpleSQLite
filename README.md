@@ -197,7 +197,7 @@ public class Table1 extends SQLiteLIB<Table1> {
         data.setFlag_active(1);
         data.setCreated_at("12-12-2020");
 
-        return insertData(Table1.class, sqLiteDatabase, data);
+        return insertData(Table1.class, sqLiteDatabase, data); //return true/false
     }
 }
 ```
@@ -255,7 +255,7 @@ public class Table1 extends SQLiteLIB<Table1> {
         String condition = "WHERE id='1'";                          //for single condition
         //String condition = "WHERE id='1' AND flag_Active='1'";    //for multi condition
 
-        return deleteData(Table1.class, sqLiteDatabase, condition);
+        return deleteData(Table1.class, sqLiteDatabase, condition); //return true/false
     }
 }
 ```
@@ -355,7 +355,7 @@ public class Table1 extends SQLiteLIB<Table1> {
 
     public boolean queryResultUpdate() {
         String query = "UPDATE table1 SET flag_Active='2' WHERE id='1'";
-        return queryResult(sqLiteDatabase, query);
+        return queryResult(sqLiteDatabase, query); //return true/false
     }
 }
 ```
