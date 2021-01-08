@@ -374,6 +374,7 @@ Entity New Verion
 [DatabaseHelper.java](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/helper/DatabaseHelper.java)
  & [TestActivity.java](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/TestActivity.java)
  & [activity_test.xml](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/res/layout/activity_test.xml)
+ & [gradle](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/build.gradle)
 
 ---
 
