@@ -102,10 +102,20 @@ Here is my [DatabaseHelper](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob
 ---
 
 ### 1. Table
-You need to extends `SQLiteLIB<YourEntity>` to your `Entity Class`. And Use Annotation `@SQLiteTable(tableName = "your_table_name")` like this:
+You need to extends `SQLiteLIB<YourEntity>` to your `Entity Class`. And Use Annotation `@SQLiteTable(tableName = "your_table_name")`. Than make `contructor` like this:
 ```java
 @SQLiteTable(tableName = "table1")
 public class Table1 extends SQLiteLIB<Table1> {
+
+    ...
+
+    private SQLiteDatabase sqLiteDatabase;
+
+    public Table1() {}
+
+    public Table1(SQLiteDatabase sqLiteDatabase) {
+        this.sqLiteDatabase = sqLiteDatabase;
+    }
 
     ...
 
