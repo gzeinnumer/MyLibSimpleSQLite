@@ -61,10 +61,17 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             return count;
         }
 
+        if (myDb == null){
+            logD("countData: SQLiteDatabase is null object references");
+            return count;
+        }
+
         if (condition.length() > 0) {
             query.append(" ").append(condition);
         }
         query.append(";");
+
+        logDQuery(TAG, tableName+"_countData: "+query);
 
         Cursor cursor;
         try {
@@ -72,7 +79,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             count = cursor.getCount();
         } catch (Exception e) {
             e.printStackTrace();
-            logD(e.getMessage());
+            logD("countData: "+e.getMessage());
             return count;
         }
         cursor.close();
@@ -107,6 +114,11 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
 
         if (clss.getDeclaredFields().length == 0){
             logD("readData: Annotation Entity Not Found");
+            return list;
+        }
+
+        if (myDb == null){
+            logD("readData: SQLiteDatabase is null object references");
             return list;
         }
 
@@ -152,10 +164,12 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
         query.append(" FROM ").append(tableName);
 
         if (condition.length() > 0) {
-            query.append(" ").append(tableName).append(".").append(condition);
+            query.append(" ").append(condition);
         }
 
         query.append(";");
+
+        logDQuery(TAG, tableName+"_readData: "+query);
 
         Cursor cursor;
 
@@ -230,6 +244,11 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
 
         if (clss.getDeclaredFields().length == 0){
             logD("queryData: Annotation Entity Not Found");
+            return list;
+        }
+
+        if (myDb == null){
+            logD("queryData: SQLiteDatabase is null object references");
             return list;
         }
 
@@ -310,10 +329,32 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
 
     @Override
     public boolean queryResult(Class<T> clss, SQLiteDatabase myDb, String query) {
+        if (clss.isAnnotationPresent(SQLiteTable.class)) {
+            SQLiteTable SQLiteTable = clss.getAnnotation(SQLiteTable.class);
+            if (SQLiteTable == null) {
+                logD("queryResult: Annotation SQLiteTable Not Found");
+                return false;
+            }
+        } else {
+            logD("queryResult: Annotation SQLiteTable Not Found");
+            return false;
+        }
+
+        if (clss.getDeclaredFields().length == 0){
+            logD("queryResult: Annotation Entity Not Found");
+            return false;
+        }
+
+        if (myDb == null){
+            logD("queryResult: SQLiteDatabase is null object references");
+            return false;
+        }
+
         try {
             myDb.execSQL(query);
             return true;
         } catch (Exception e){
+            logD("queryResult: "+e.getMessage());
             return false;
         }
     }
@@ -334,6 +375,11 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
 
         if (clss.getDeclaredFields().length == 0){
             logD("countData: Annotation Entity Not Found");
+            return count;
+        }
+
+        if (myDb == null){
+            logD("countData: SQLiteDatabase is null object references");
             return count;
         }
 
@@ -361,12 +407,17 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             return false;
         }
 
+        if (myDb == null){
+            logD("deleteData: SQLiteDatabase is null object references");
+            return false;
+        }
+
         try {
             long res = myDb.delete(tableName, condition, new String[]{});
             return res > 0;
         } catch (Exception e) {
             e.printStackTrace();
-            logD(e.getMessage());
+            logD("deleteData: "+e.getMessage());
             return false;
         }
     }
@@ -392,6 +443,11 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             return false;
         }
 
+        if (myDb == null){
+            logD("insertData: SQLiteDatabase is null object references");
+            return false;
+        }
+
         List<String> value = new ArrayList<>();
         List<String> key = new ArrayList<>();
 
@@ -410,7 +466,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                             value.add(null);
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
-                        logD(e.getMessage());
+                        logD("insertData: "+e.getMessage());
                     }
                 }
             }
@@ -425,7 +481,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                         value.add(null);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
-                    logD(e.getMessage());
+                    logD("insertData: "+e.getMessage());
                 }
             }
             VarcharTypeData varcharTypeData = f.getAnnotation(VarcharTypeData.class);
@@ -439,7 +495,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                         value.add(null);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
-                    logD(e.getMessage());
+                    logD("insertData: "+e.getMessage());
                 }
             }
             TimeStampTypeData timestamp = f.getAnnotation(TimeStampTypeData.class);
@@ -453,7 +509,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                         value.add(null);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
-                    logD(e.getMessage());
+                    logD("insertData: "+e.getMessage());
                 }
             }
             DecimalTypeData decimalTypeData = f.getAnnotation(DecimalTypeData.class);
@@ -467,7 +523,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                         value.add(null);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
-                    logD(e.getMessage());
+                    logD("insertData: "+e.getMessage());
                 }
             }
             TextTypeData textTypeData = f.getAnnotation(TextTypeData.class);
@@ -481,7 +537,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                         value.add(null);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
-                    logD(e.getMessage());
+                    logD("insertData: "+e.getMessage());
                 }
             }
         }
@@ -495,7 +551,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             return true;
         } catch (Exception e) {
             e.printStackTrace();
-            logD(e.getMessage());
+            logD("insertData: "+e.getMessage());
             return false;
         }
     }
@@ -521,6 +577,11 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             return false;
         }
 
+        if (myDb == null){
+            logD("updatedData: SQLiteDatabase is null object references");
+            return false;
+        }
+
         ArrayList<String> fields = new ArrayList<>(Arrays.asList(fieldToUpdate));
 
         List<String> value = new ArrayList<>();
@@ -540,7 +601,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                             value.add(null);
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
-                        logD(e.getMessage());
+                        logD("updatedData: "+e.getMessage());
                     }
                 }
             }
@@ -556,7 +617,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                             value.add(null);
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
-                        logD(e.getMessage());
+                        logD("updatedData: "+e.getMessage());
                     }
                 }
             }
@@ -572,7 +633,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                             value.add(null);
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
-                        logD(e.getMessage());
+                        logD("updatedData: "+e.getMessage());
                     }
                 }
             }
@@ -588,7 +649,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                             value.add(null);
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
-                        logD(e.getMessage());
+                        logD("updatedData: "+e.getMessage());
                     }
                 }
             }
@@ -604,7 +665,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
                             value.add(null);
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
-                        logD(e.getMessage());
+                        logD("updatedData: "+e.getMessage());
                     }
                 }
             }
@@ -619,7 +680,7 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             return res>0;
         } catch (Exception e) {
             e.printStackTrace();
-            logD(e.getMessage());
+            logD("updatedData: "+e.getMessage());
             return false;
         }
     }
@@ -634,5 +695,9 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
 
     private void logD(String msg){
         Log.e(TAG, "logD: "+msg, null);
+    }
+
+    private void logDQuery(String TAG, String msg){
+        Log.d(TAG, msg);
     }
 }
