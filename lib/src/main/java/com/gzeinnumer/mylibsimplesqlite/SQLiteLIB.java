@@ -553,8 +553,9 @@ public abstract class SQLiteLIB<T> implements InterfaceDaoSQLite<T> {
             for (int i = 0; i < key.size(); i++) {
                 values.put(key.get(i), value.get(i));
             }
-            myDb.insert(tableName, null, values);
-            return true;
+
+            long res = myDb.insert(tableName, null, values);
+            return res>0;
         } catch (Exception e) {
             e.printStackTrace();
             logD("insertData: "+e.getMessage());
