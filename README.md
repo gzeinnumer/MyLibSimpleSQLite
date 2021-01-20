@@ -389,6 +389,10 @@ Entity New Verion
 
 ---
 
+You can combine this library with [MyLibSQLiteBuilder](https://github.com/gzeinnumer/MyLibSQLiteBuilder)
+
+---
+
 ## Version
 - **1.0.0**
   - First Release
