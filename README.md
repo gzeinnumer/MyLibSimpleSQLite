@@ -392,7 +392,7 @@ Entity New Verion
 
 ---
 
-## Debug
+#### Debug
 <p align="center">
   <img src="https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/preview/example6.JPG" width="400"/>
 </p>
