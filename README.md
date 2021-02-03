@@ -15,7 +15,7 @@
     <a><img src="https://img.shields.io/badge/Version-2.1.1-brightgreen.svg?style=flat"></a>
     <a><img src="https://img.shields.io/badge/ID-gzeinnumer-blue.svg?style=flat"></a>
     <a><img src="https://img.shields.io/badge/Java-Suport-green?logo=java&style=flat"></a>
-    <a><img src="https://img.shields.io/badge/Koltin-Suport-green?logo=kotlin&style=flat"></a>
+    <a><img src="https://img.shields.io/badge/Kotlin-Suport-green?logo=kotlin&style=flat"></a>
     <a href="https://github.com/gzeinnumer"><img src="https://img.shields.io/github/followers/gzeinnumer?label=follow&style=social"></a>
     <br>
     <p>Simple way to use CRUD SQLite</p>
@@ -29,7 +29,18 @@
 
 `please tell me if you find error.`
 
-## Download
+---
+# Content List
+* [Download](#download)
+* [Feature List](#feature-list)
+* [Tech stack and 3rd library](#tech-stack-and-3rd-library)
+* [Usage](#usage)
+* [Example Code/App](#example-codeapp)
+* [Version](#version)
+* [Contribution](#contribution)
+
+---
+# Download
 Add maven `jitpack.io` and `dependencies` in `build.gradle (Project)` :
 ```gradle
 // build.gradle project
@@ -47,7 +58,8 @@ dependencies {
 }
 ```
 
-## Feature List
+---
+# Feature List
 - [x] [1. Table](#1-table)
 - [x] [2. Entity](#2-entity)
 - [x] [3. Insert](#3-insert)
@@ -59,9 +71,14 @@ dependencies {
 - [x] [9. Query Result](#9-query-result) return true/false.
 - [ ] Create Table
 
----
+--- 
+# Tech stack and 3rd library
+- [x] [SQLite](https://developer.android.com/training/data-storage/sqlite?hl=id)
 
-## Scenario Table
+---
+# Usage
+
+### Scenario Table
 |<img src="https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/preview/example7.JPG" width="400"/>|<img src="https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/preview/example8.JPG" width="400"/>|
 |---|---|
 
@@ -69,10 +86,7 @@ dependencies {
   <img src="https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/preview/example5.JPG" width="400"/>
 </p>
 
----
-## USE
-Please make sure you have access to your database with instance from `SQLiteDatabase`.
-example :
+Please make sure you have access to your database with instance from `SQLiteDatabase`. example :
 ```java
 public class TestActivity extends AppCompatActivity {
 
@@ -99,8 +113,7 @@ Here is my [DatabaseHelper](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob
 
 **Or you can use your own configuration to connect to Database, just make sure you have access to your `local database`. [ReadMore](https://developer.android.com/training/data-storage/sqlite?hl=id)**.
 
----
-
+#
 ### 1. Table
 You need to extends `SQLiteLIB<YourEntity>` to your `Entity Class`. And Use Annotation `@SQLiteTable(tableName = "your_table_name")`. Than make `contructor` like this:
 ```java
@@ -363,6 +376,7 @@ public class Table1 extends SQLiteLIB<Table1> {
 You can use it to excecute `update` or `delete` query and give you `true/false` as return.
 
 ---
+
 Entity Old Verision
 [Table1_OLD.java](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/entity/old/Table1_OLD.java)
  & [Table2_OLD.java](https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/app/src/main/java/com/gzeinnumer/mylibsimplesqlite/entity/old/Table2_OLD.java)
@@ -378,22 +392,24 @@ Entity New Verion
 
 ---
 
-## Debug
+#### Debug
 <p align="center">
   <img src="https://github.com/gzeinnumer/MyLibSimpleSQLite/blob/master/preview/example6.JPG" width="400"/>
 </p>
 
 ---
+# Example Code/App
 
 **Example App [Java](https://github.com/gzeinnumer/MyLibSQLiteExample) & [Kotlin](https://github.com/gzeinnumer/MyLibSimpleSQLitekt)**
+
+[Sample Code And App](https://github.com/gzeinnumer/MyLibSimpleSQLiteExample)
 
 ---
 
 You can combine this library with [MyLibSQLiteBuilder](https://github.com/gzeinnumer/MyLibSQLiteBuilder)
 
 ---
-
-## Version
+# Version
 - **1.0.0**
   - First Release
 - **1.0.6**
@@ -418,9 +434,8 @@ You can combine this library with [MyLibSQLiteBuilder](https://github.com/gzeinn
   - Bug Fixing
 
 ---
-
-## Contribution
-You can sent your constibution to `branche` `open-pull`.
+# Contribution
+You can sent your constibution to `branch` `open-pull`.
 
 ---
 
