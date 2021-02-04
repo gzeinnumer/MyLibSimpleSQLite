@@ -402,7 +402,7 @@ Entity New Verion
 
 **Example App [Java](https://github.com/gzeinnumer/MyLibSQLiteExample) & [Kotlin](https://github.com/gzeinnumer/MyLibSimpleSQLitekt)**
 
-[Sample Code And App](https://github.com/gzeinnumer/MyLibSimpleSQLiteExample)
+[Sample Code And App](https://github.com/gzeinnumer/MyLibSQLiteExample)
 
 ---
 
